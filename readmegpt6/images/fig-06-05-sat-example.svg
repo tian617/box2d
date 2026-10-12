@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" role="img" aria-labelledby="t d">
+  <title id="t">第 6 节数值例的两个盒子</title>
+  <desc id="d">A 核心 [-1,1]x[-1,0]，B 核心 [-2,2]x[-0.1,0.9]，上边分离 -0.1。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="420" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 6-5　完整算例：宽盒子压在矮盒子顶边上</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">A 核心 [−1,1]×[−1,0]，B 核心 [−2,2]×[−0.1,0.9]。双方最浅分离都是 −0.1，选 A 顶边作参考。</text>
+  <rect x="16" y="64" width="848" height="340" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <rect x="320" y="220" width="160" height="80" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="400" y="268" text-anchor="middle" class="lab" fill="#1d4ed8">A</text>
+  <rect x="240" y="132" width="320" height="96" fill="#fed7aa" fill-opacity="0.75" stroke="#c2410c" stroke-width="2"/>
+  <text x="400" y="180" text-anchor="middle" class="lab" fill="#c2410c">B</text>
+  <line x1="320" y1="220" x2="480" y2="220" stroke="#047857" stroke-width="5"/>
+  <text x="400" y="212" text-anchor="middle" class="ok">参考边 edgeA=2</text>
+  <circle cx="320" cy="228" r="5" fill="#047857"/>
+  <circle cx="480" cy="228" r="5" fill="#047857"/>
+  <text x="320" y="248" text-anchor="middle" class="small">pU</text>
+  <text x="480" y="248" text-anchor="middle" class="small">pL</text>
+  <text x="80" y="120" class="note">A 上边 s=−0.1</text>
+  <text x="80" y="144" class="note">A 底边 s=−1.9 太深</text>
+  <text x="80" y="168" class="note">左右轴 s=−3 更深</text>
+  <text x="600" y="120" class="note">裁剪后两点核心分离都是 −0.1</text>
+  <text x="600" y="144" class="note">加圆角后表面分离 −0.25</text>
+  <text x="600" y="176" class="ok">两个接触点才能撑住转动</text>
+
+</svg>

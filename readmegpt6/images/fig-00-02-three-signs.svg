@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" role="img" aria-labelledby="t d">
+  <title id="t">分离量、法向相对速度、法向冲量的符号</title>
+  <desc id="d">s 看间隙，vn 看接近还是分离，法向冲量只能推开不能吸住。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="420" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 0-2　接触里三个最容易搞反的符号</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">先记住：正分离 = 还有空隙；负速度 = 正在靠近；正冲量 = 把双方推开。</text>
+  <rect x="16" y="66" width="276" height="336" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="154" y="92" text-anchor="middle" class="lab">分离量 s</text>
+  <line x1="40" y1="250" x2="268" y2="250" stroke="#6b7280" stroke-width="6"/>
+  <rect x="92" y="118" width="124" height="88" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <line x1="154" y1="206" x2="154" y2="246" stroke="#7c3aed" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="164" y="232" class="small" fill="#7c3aed">s &gt; 0</text>
+  <text x="154" y="280" text-anchor="middle" class="ok">s &gt; 0 有间隙</text>
+  <text x="154" y="302" text-anchor="middle" class="note">s = 0 刚好贴住</text>
+  <text x="154" y="324" text-anchor="middle" class="bad">s &lt; 0 已经重叠</text>
+  <text x="154" y="356" text-anchor="middle" class="sub">单位：米。负值不是“负距离”。</text>
+
+  <rect x="302" y="66" width="276" height="336" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="440" y="92" text-anchor="middle" class="lab">法向相对速度 vn</text>
+  <line x1="326" y1="250" x2="554" y2="250" stroke="#6b7280" stroke-width="6"/>
+  <rect x="378" y="128" width="124" height="88" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <line x1="440" y1="168" x2="440" y2="216" stroke="#047857" stroke-width="2.4" marker-end="url(#ah-v)"/>
+  <text x="400" y="188" class="small" fill="#047857">v 向下</text>
+  <text x="440" y="280" text-anchor="middle" class="bad">vn &lt; 0 正在接近</text>
+  <text x="440" y="302" text-anchor="middle" class="note">vn = 0 法向相对静止</text>
+  <text x="440" y="324" text-anchor="middle" class="ok">vn &gt; 0 正在分离</text>
+  <text x="440" y="356" text-anchor="middle" class="sub">vn = (vB − vA) · n</text>
+
+  <rect x="588" y="66" width="276" height="336" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="726" y="92" text-anchor="middle" class="lab">法向冲量 λn</text>
+  <line x1="612" y1="250" x2="840" y2="250" stroke="#6b7280" stroke-width="6"/>
+  <rect x="664" y="128" width="124" height="88" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <line x1="726" y1="236" x2="726" y2="176" stroke="#1d4ed8" stroke-width="2.6" marker-end="url(#ah-n)"/>
+  <text x="740" y="200" class="small" fill="#1d4ed8">只能推开</text>
+  <text x="726" y="280" text-anchor="middle" class="ok">累计 λn ≥ 0</text>
+  <text x="726" y="302" text-anchor="middle" class="note">单次增量可以是负的</text>
+  <text x="726" y="324" text-anchor="middle" class="sub">负增量 = 撤回多推的部分</text>
+  <text x="726" y="356" text-anchor="middle" class="sub">不是把物体吸回去</text>
+
+</svg>

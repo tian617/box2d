@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440" role="img" aria-labelledby="t d">
+  <title id="t">GJK 完整迭代：点到三角形的距离</title>
+  <desc id="d">A 为原点，B 为 (3,1)(1,3)(3,3)。两次支撑后停在边，距离 sqrt(8)。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="440" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 7-6　第 9 节手算：A 是原点，B 是三角形，GJK 只走了两步</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">初始化 w1=−b0=(−3,−1) → 支撑到 b1 → 线段中点 (−2,−2) → 再支撑回到已有点，停止。</text>
+  <rect x="16" y="64" width="848" height="360" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <line x1="80" y1="320" x2="820" y2="320" stroke="#e5e7eb"/>
+  <line x1="200" y1="360" x2="200" y2="80" stroke="#e5e7eb"/>
+  <circle cx="200" cy="320" r="7" fill="#1d4ed8"/>
+  <text x="150" y="314" class="lab" fill="#1d4ed8">A = (0,0)</text>
+  <polygon points="440,240 280,80 440,80" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <circle cx="440" cy="240" r="5" fill="#c2410c"/>
+  <circle cx="280" cy="80" r="5" fill="#c2410c"/>
+  <circle cx="440" cy="80" r="5" fill="#c2410c"/>
+  <text x="452" y="250" class="small">b0 (3,1)</text>
+  <text x="200" y="76" class="small">b1 (1,3)</text>
+  <text x="452" y="76" class="small">b2 (3,3)</text>
+  <circle cx="360" cy="160" r="7" fill="#047857"/>
+  <text x="374" y="156" class="ok">pB = (2,2)</text>
+  <line x1="200" y1="320" x2="352" y2="168" stroke="#047857" stroke-width="2.4"/>
+  <text x="240" y="230" class="ok">距离 √8 ≈ 2.83</text>
+  <text x="560" y="200" class="note">1. 从 (−3,−1) 出发</text>
+  <text x="560" y="224" class="note">2. 沿 (3,1) 选中 b1</text>
+  <text x="560" y="248" class="note">3. 线段最近点 (−2,−2)</text>
+  <text x="560" y="272" class="note">4. 再查到已有点，结束</text>
+  <text x="560" y="304" class="sub">全程没有构造差集凸包</text>
+  <text x="560" y="328" class="sub">法线 n = (1,1)/√2，从 A 指向 B</text>
+
+</svg>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 352" role="img">
+  <title>先缩小再加增量</title>
+  <desc>旧速度乘阻尼缩放比后，再加上本子步外力和重力造成的速度增量。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker><marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker><marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker><marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker><marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker><marker id="ah-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#b91c1c"/></marker><marker id="ah-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#6b7280"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#1f2937; }
+      .eq { font: 12px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#1f2937; }
+      .eqb { font: 700 13px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#111827; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#b91c1c; }
+      .hot { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#c2410c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="352" fill="#ffffff"/>
+  <text x="440" y="28" class="title" text-anchor="middle">图 23-5　一个子步里 x 方向速度的变化：先缩，再加</text>
+  <text x="440" y="50" class="sub" text-anchor="middle">例：h = 1/240 s，c_v = 2.4 1/s，vₓ = 3 m/s，F = (4, 0) N，m = 2 kg。箭头长度为示意，放大了缩小量与增量。</text>
+  <rect x="16" y="70" width="270" height="236" rx="8" fill="#f8fafc" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="151" y="94" class="lab" text-anchor="middle">① 旧速度</text>
+  <rect x="305" y="70" width="270" height="236" rx="8" fill="#f8fafc" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="440" y="94" class="lab" text-anchor="middle">② 乘缩放比（阻尼）</text>
+  <rect x="594" y="70" width="270" height="236" rx="8" fill="#f8fafc" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="729" y="94" class="lab" text-anchor="middle">③ 加增量（外力）</text>
+  <line x1="34" y1="170" x2="254" y2="170" stroke="#1d4ed8" stroke-width="3.5" marker-end="url(#ah-n)"/>
+  <text x="151" y="150" class="eqb" text-anchor="middle">vₓ = 3</text>
+  <text x="151" y="210" class="small" text-anchor="middle">来自上一个子步结束时</text>
+  <text x="151" y="232" class="small" text-anchor="middle">（或大步开始时的状态）</text>
+  <line x1="323" y1="170" x2="543" y2="170" stroke="#6b7280" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ah-g)"/>
+  <text x="433" y="142" class="small" text-anchor="middle">旧：3</text>
+  <line x1="323" y1="196" x2="513" y2="196" stroke="#1d4ed8" stroke-width="3.5" marker-end="url(#ah-n)"/>
+  <text x="418" y="224" class="eq" text-anchor="middle">kv = 1/(1+0.01) = 0.990099</text>
+  <text x="418" y="246" class="eqb" text-anchor="middle">vₓ·kv = 2.970297</text>
+  <text x="418" y="272" class="small" text-anchor="middle">缩小了约 0.0297 m/s</text>
+  <line x1="612" y1="170" x2="792" y2="170" stroke="#1d4ed8" stroke-width="3.5" marker-end="url(#ah-n)"/>
+  <line x1="792" y1="170" x2="836" y2="170" stroke="#c2410c" stroke-width="3.5" marker-end="url(#ah-o)"/>
+  <text x="702" y="148" class="small" text-anchor="middle">2.970297</text>
+  <text x="814" y="148" class="hot" text-anchor="middle">+0.008333</text>
+  <text x="727" y="214" class="eq" text-anchor="middle">Δvₓ = h·F/m = 4/(240·2)</text>
+  <text x="727" y="236" class="eqb" text-anchor="middle">新 vₓ = 2.978630</text>
+  <text x="727" y="262" class="small" text-anchor="middle">y 方向同理：</text>
+  <text x="727" y="282" class="eq" text-anchor="middle">−0.990099 − 0.041667 = −1.031766</text>
+  <line x1="286" y1="170" x2="304" y2="170" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <line x1="575" y1="170" x2="593" y2="170" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <text x="440" y="336" class="note" text-anchor="middle">缩放比永远在 (0, 1]，只会让速度变小；增量项可正可负，不受阻尼影响。</text>
+</svg>

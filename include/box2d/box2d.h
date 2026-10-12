@@ -46,6 +46,16 @@ B2_API bool b2World_IsValid( b2WorldId id );
 /// @param subStepCount The number of sub-steps, increasing the sub-step count can increase accuracy. Usually 4.
 B2_API void b2World_Step( b2WorldId worldId, float timeStep, int subStepCount );
 
+/// Record each solver phase of subsequent world steps. Off by default, and the step result does not change when this is off.
+/// Only serial worlds record frames (workerCount of 0 or 1). A multithreaded world leaves the trace empty.
+/// The trace is cleared at the start of each step. Do not call this while the world is locked.
+/// @ingroup world
+B2_API void b2World_EnableSolverTrace( b2WorldId worldId, bool enabled );
+
+/// Read the solver trace written by the most recent b2World_Step. When tracing is off, the counts are zero.
+/// @ingroup world
+B2_API b2SolverTrace b2World_GetSolverTrace( b2WorldId worldId );
+
 /// Call this to draw shapes and other debug draw data
 B2_API void b2World_Draw( b2WorldId worldId, b2DebugDraw* draw );
 

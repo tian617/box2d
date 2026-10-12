@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 380" role="img" aria-labelledby="t d">
+  <title id="t">重叠时应选分离量最大的负值</title>
+  <desc id="d">沿 (1,0) 得 -0.2，沿 (-1,0) 得 -3.8。应选较浅的 -0.2。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="380" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 6-2　已经重叠时：选“最浅”的穿透方向，不是最深</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">A 覆盖 [−1,1]，B 覆盖 [0.8,2.8]。向右 s=−0.2，向左 s=−3.8。推开应沿 −0.2。</text>
+  <rect x="16" y="64" width="848" height="300" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <rect x="200" y="140" width="240" height="120" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="320" y="204" text-anchor="middle" class="lab" fill="#1d4ed8">A [−1, 1]</text>
+  <rect x="416" y="160" width="240" height="120" fill="#fed7aa" fill-opacity="0.75" stroke="#c2410c" stroke-width="2"/>
+  <text x="560" y="224" text-anchor="middle" class="lab" fill="#c2410c">B [0.8, 2.8]</text>
+  <line x1="440" y1="140" x2="440" y2="300" stroke="#047857" stroke-width="2.4"/>
+  <text x="450" y="132" class="ok">重叠 0.2</text>
+  <text x="80" y="120" class="ok">n=(1,0)：s=−0.2  ← 选它</text>
+  <text x="80" y="144" class="bad">n=(−1,0)：s=−3.8  太深</text>
+  <text x="80" y="176" class="note">“先对顶点取最小，再对边取最大”</text>
+  <text x="80" y="200" class="note">两层最值目的不同，不能对调</text>
+  <text x="80" y="232" class="bad">n 必须是单位向量，否则米制阈值全错</text>
+
+</svg>

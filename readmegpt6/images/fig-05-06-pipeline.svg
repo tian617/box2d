@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" role="img" aria-labelledby="t d">
+  <title id="t">一次形状对从过滤到流形的总流程</title>
+  <desc id="d">七步：过滤、AABB、相对变换、查表分发、窄阶段、局部流形、世界锚点。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+      .tiny { font: 11px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+    </style>
+  </defs>
+
+  <rect width="880" height="420" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 5-6　总流程：先筛候选，再按形状对做窄阶段</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">本章只做到局部流形和世界锚点。冲量从第 09 章开始。</text>
+
+  <rect x="24" y="72" width="118" height="70" rx="8" fill="#dbeafe" stroke="#1d4ed8"/>
+  <text x="83" y="100" text-anchor="middle" class="lab">1 过滤</text>
+  <text x="83" y="122" text-anchor="middle" class="tiny">层、组、传感器</text>
+
+  <rect x="164" y="72" width="118" height="70" rx="8" fill="#dbeafe" stroke="#1d4ed8"/>
+  <text x="223" y="100" text-anchor="middle" class="lab">2 AABB</text>
+  <text x="223" y="122" text-anchor="middle" class="tiny">两轴区间都重叠</text>
+
+  <rect x="304" y="72" width="118" height="70" rx="8" fill="#dbeafe" stroke="#1d4ed8"/>
+  <text x="363" y="100" text-anchor="middle" class="lab">3 相对变换</text>
+  <text x="363" y="122" text-anchor="middle" class="tiny">B 放到 A 局部系</text>
+
+  <rect x="444" y="72" width="118" height="70" rx="8" fill="#fed7aa" stroke="#c2410c"/>
+  <text x="503" y="100" text-anchor="middle" class="lab">4 查表分发</text>
+  <text x="503" y="122" text-anchor="middle" class="tiny">12 种已注册配对</text>
+
+  <rect x="584" y="72" width="118" height="70" rx="8" fill="#fed7aa" stroke="#c2410c"/>
+  <text x="643" y="100" text-anchor="middle" class="lab">5 窄阶段</text>
+  <text x="643" y="122" text-anchor="middle" class="tiny">距离 / SAT / 单面</text>
+
+  <rect x="724" y="72" width="132" height="70" rx="8" fill="#bbf7d0" stroke="#047857"/>
+  <text x="790" y="100" text-anchor="middle" class="lab">6–7 输出</text>
+  <text x="790" y="122" text-anchor="middle" class="tiny">流形 → 世界锚点</text>
+
+  <line x1="142" y1="107" x2="162" y2="107" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <line x1="282" y1="107" x2="302" y2="107" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <line x1="422" y1="107" x2="442" y2="107" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <line x1="562" y1="107" x2="582" y2="107" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <line x1="702" y1="107" x2="722" y2="107" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+
+  <rect x="24" y="168" width="832" height="228" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="40" y="196" class="lab">每一步会分出的情况</text>
+  <text x="40" y="228" class="note">1 过滤：层/组不允许，或双方都是静态 → 不建接触。</text>
+  <text x="40" y="254" class="note">2 AABB：任一轴出现 lA &gt; uB 或 lB &gt; uA → 直接拒绝。两轴都重叠 ≠ 实体相交。</text>
+  <text x="40" y="280" class="note">4 查表：12 种有函数；线段-线段、链段-线段、链段-链段没有函数，永不配对。</text>
+  <text x="40" y="306" class="note">5 窄阶段：距离型最多 1 个点；面接触可 2 个点；分离量超过推测距离 0.02 m 通常返回空流形。</text>
+  <text x="40" y="332" class="note">6 局部流形：点、法线、分离量都在 A 的局部系。7 再转成相对质心的世界方向锚点。</text>
+  <text x="40" y="368" class="sub">mover 走另一条平面查询路径，不是这 12 种接触流形，见第 15 章。</text>
+
+</svg>

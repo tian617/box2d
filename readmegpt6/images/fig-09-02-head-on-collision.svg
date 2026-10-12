@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">无转动单点碰撞的冲量</title>
+  <desc id="d">mA=2, mB=3, vA=3, vB=-1, e=0.5, λ=7.2。动量守恒且恢复关系成立。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 9-2　对心碰撞：冲量同时改两边速度，总线动量不变</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">mA=2 kg，mB=3 kg，vA⁻=3，vB⁻=−1，e=0.5。λ=7.2 N·s。碰后 −0.6 与 1.4。</text>
+  <rect x="16" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="88" text-anchor="middle" class="lab">碰前</text>
+  <circle cx="140" cy="200" r="42" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="300" cy="200" r="50" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <text x="140" y="196" text-anchor="middle" class="lab">A 2kg</text>
+  <text x="140" y="216" text-anchor="middle" class="small">3 m/s →</text>
+  <text x="300" y="196" text-anchor="middle" class="lab">B 3kg</text>
+  <text x="300" y="216" text-anchor="middle" class="small">← 1 m/s</text>
+  <text x="224" y="280" text-anchor="middle" class="bad">u⁻ = −4 m/s</text>
+  <text x="224" y="304" text-anchor="middle" class="note">K = 1/2 + 1/3 = 5/6</text>
+  <text x="224" y="328" text-anchor="middle" class="note">λ = −(1+e)u⁻ / K = 7.2</text>
+  <text x="224" y="360" text-anchor="middle" class="sub">动量 2×3 + 3×(−1) = 3</text>
+
+  <rect x="448" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="88" text-anchor="middle" class="lab">碰后</text>
+  <circle cx="572" cy="200" r="42" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="732" cy="200" r="50" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <text x="572" y="196" text-anchor="middle" class="lab">A</text>
+  <text x="572" y="216" text-anchor="middle" class="small">−0.6 m/s</text>
+  <text x="732" y="196" text-anchor="middle" class="lab">B</text>
+  <text x="732" y="216" text-anchor="middle" class="small">+1.4 m/s</text>
+  <text x="656" y="280" text-anchor="middle" class="ok">u⁺ = 2 = −e u⁻</text>
+  <text x="656" y="304" text-anchor="middle" class="ok">动量仍是 3</text>
+  <text x="656" y="328" text-anchor="middle" class="note">动能 10.5 → 3.3 J，少 7.2 J</text>
+  <text x="656" y="360" text-anchor="middle" class="sub">e=0 只消接近；e=1 该模式不损动能</text>
+
+</svg>

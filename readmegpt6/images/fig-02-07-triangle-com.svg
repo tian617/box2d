@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">三角形质心是三个顶点的平均</title>
+  <desc id="d">顶点 (1,1)(5,1)(1,4)，质心 (7/3, 2)。源码用 (e1+e2)/3 再加回参考点。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 2-7　三角形：三个顶点平均，也等于 (e1+e2)/3 加回 v0</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">v0=(1,1)，v1=(5,1)，v2=(1,4)。c=(v0+v1+v2)/3=(7/3, 2)。这是多边形循环在 count=3 时的全部工作。</text>
+  <rect x="16" y="64" width="848" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <polygon points="140,300 460,300 140,120" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="140" cy="300" r="5" fill="#1d4ed8"/>
+  <circle cx="460" cy="300" r="5" fill="#1d4ed8"/>
+  <circle cx="140" cy="120" r="5" fill="#1d4ed8"/>
+  <text x="80" y="320" class="small">v0 (1,1) 参考点 r</text>
+  <text x="468" y="320" class="small">v1 (5,1)</text>
+  <text x="80" y="114" class="small">v2 (1,4)</text>
+  <line x1="140" y1="300" x2="455" y2="300" stroke="#c2410c" stroke-width="2.2" marker-end="url(#ah-o)"/>
+  <line x1="140" y1="300" x2="140" y2="128" stroke="#7c3aed" stroke-width="2.2"/>
+  <text x="280" y="288" class="small" fill="#c2410c">e1=(4,0)</text>
+  <text x="150" y="210" class="small" fill="#7c3aed">e2=(0,3)</text>
+  <circle cx="246" cy="240" r="7" fill="#047857"/>
+  <text x="258" y="236" class="ok">c=(7/3, 2)</text>
+  <text x="520" y="140" class="note">A = ½ (e1×e2) = 6 m²</text>
+  <text x="520" y="166" class="note">(e1+e2)/3 = (4/3, 1)</text>
+  <text x="520" y="192" class="ok">c = r + (e1+e2)/3</text>
+  <text x="520" y="226" class="sub">= (1,1)+(4/3,1)=(7/3,2)</text>
+  <text x="520" y="258" class="sub">也等于三个顶点坐标平均</text>
+
+</svg>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">叉积计算力矩</title>
+  <desc id="d">r=(2,0)，F=(0,3) 产生逆时针力矩 6；F 过质心则力矩为 0。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 1-3　叉积 τ = r × F：力不经过质心才会转</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">左图：右端向上推，τ=6 N·m，逆时针。右图：同样的力穿过质心，τ=0。</text>
+  <rect x="16" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="88" text-anchor="middle" class="lab">偏心力：会转</text>
+  <rect x="120" y="170" width="200" height="80" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="220" cy="210" r="5" fill="#111827"/>
+  <text x="232" y="206" class="small">C 质心</text>
+  <line x1="220" y1="210" x2="310" y2="210" stroke="#c2410c" stroke-width="2.2" marker-end="url(#ah-o)"/>
+  <text x="250" y="200" class="small" fill="#c2410c">r = (2, 0)</text>
+  <line x1="320" y1="210" x2="320" y2="130" stroke="#047857" stroke-width="2.6" marker-end="url(#ah-v)"/>
+  <text x="330" y="160" class="small" fill="#047857">F = (0, 3)</text>
+  <path d="M 250 250 A 40 40 0 0 0 190 250" fill="none" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#ah-p)"/>
+  <text x="224" y="300" text-anchor="middle" class="ok">τ = 2×3 − 0×0 = 6  逆时针</text>
+  <text x="224" y="360" text-anchor="middle" class="sub">平动加速度由合力决定，转动由力矩决定</text>
+
+  <rect x="448" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="88" text-anchor="middle" class="lab">力过质心：只平移</text>
+  <rect x="552" y="170" width="200" height="80" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="652" cy="210" r="5" fill="#111827"/>
+  <line x1="652" y1="210" x2="652" y2="130" stroke="#047857" stroke-width="2.6" marker-end="url(#ah-v)"/>
+  <text x="662" y="160" class="small" fill="#047857">F = (3, 0) 过 C</text>
+  <text x="656" y="300" text-anchor="middle" class="note">τ = 0，没有旋转趋势</text>
+  <text x="656" y="328" text-anchor="middle" class="sub">同样大小的力，作用点不同，角加速度就不同</text>
+
+</svg>

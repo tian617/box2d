@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">自由落体 1 秒后的三种高度</title>
+  <desc id="d">解析 5.000，显式 5.083，半隐式 4.917。速度都是 -10。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 3-4　从 10 m 自由落下 1 秒：三种高度不要记混</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">g=−10 m/s²，h=1/60 s，共 60 步。速度都到 −10 m/s；位置误差恰好在解析值两侧。</text>
+  <rect x="16" y="64" width="848" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <line x1="80" y1="340" x2="80" y2="90" stroke="#1f2937" marker-end="url(#ah-ink)"/>
+  <text x="40" y="100" class="small">y / m</text>
+  <line x1="80" y1="100" x2="820" y2="100" stroke="#e5e7eb"/>
+  <text x="30" y="104" class="small">10</text>
+  <line x1="80" y1="220" x2="820" y2="220" stroke="#047857" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="30" y="224" class="ok">5</text>
+  <rect x="200" y="216" width="70" height="8" fill="#047857"/>
+  <text x="235" y="250" text-anchor="middle" class="ok">解析</text>
+  <text x="235" y="270" text-anchor="middle" class="small">5.000 m</text>
+  <rect x="400" y="212" width="70" height="12" fill="#1d4ed8"/>
+  <text x="435" y="250" text-anchor="middle" class="lab" fill="#1d4ed8">显式</text>
+  <text x="435" y="270" text-anchor="middle" class="small">5.083 m</text>
+  <rect x="600" y="224" width="70" height="8" fill="#c2410c"/>
+  <text x="635" y="250" text-anchor="middle" class="lab" fill="#c2410c">半隐式</text>
+  <text x="635" y="270" text-anchor="middle" class="small">4.917 m</text>
+  <text x="440" y="320" text-anchor="middle" class="note">“显式欧拉 60 步后还在 10 米”是错的：只有第一步没动。</text>
+  <text x="440" y="344" text-anchor="middle" class="sub">4 个子步时半隐式约 4.979 m，更接近 5，但不会变成解析解。</text>
+
+</svg>

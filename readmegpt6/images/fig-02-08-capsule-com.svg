@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">胶囊质心是两端圆心中点，半圆外偏会抵消</title>
+  <desc id="d">p1=(0,0)，p2=(4,0)，R=1。两端半圆质心外偏相互抵消，整体质心在 (2,0)。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 2-8　胶囊：拆成矩形加两个半圆，整体质心在两端中点</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">p1=(0,0)，p2=(4,0)，R=1。左半圆质心左偏 4R/(3π)，右半圆右偏同样多，加权后抵消。</text>
+  <rect x="16" y="64" width="848" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <rect x="220" y="150" width="320" height="120" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <path d="M 220 150 A 60 60 0 0 0 220 270" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <path d="M 540 150 A 60 60 0 0 1 540 270" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="220" cy="210" r="5" fill="#111827"/>
+  <circle cx="540" cy="210" r="5" fill="#111827"/>
+  <text x="200" y="320" class="small">p1</text>
+  <text x="530" y="320" class="small">p2</text>
+  <circle cx="380" cy="210" r="7" fill="#047857"/>
+  <text x="392" y="198" class="ok">c=(p1+p2)/2</text>
+  <circle cx="180" cy="210" r="5" fill="#7c3aed"/>
+  <circle cx="580" cy="210" r="5" fill="#7c3aed"/>
+  <text x="80" y="200" class="small" fill="#7c3aed">半圆质心</text>
+  <text x="80" y="222" class="small" fill="#7c3aed">外偏 a</text>
+  <text x="600" y="200" class="small" fill="#7c3aed">外偏 a</text>
+  <text x="80" y="120" class="note">m箱 = ρ·2R·L</text>
+  <text x="80" y="144" class="note">m圆 = ρ π R²</text>
+  <text x="600" y="120" class="ok">两端外偏质量相同、方向相反</text>
+  <text x="600" y="144" class="ok">所以代码不必算 a，直接取中点</text>
+  <text x="600" y="176" class="sub">a 只用于后面的惯量平行轴</text>
+
+</svg>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" role="img">
+  <title>位移累加</title>
+  <desc>子步只累加增量。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker><marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker><marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker><marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker><marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker><marker id="ah-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#b91c1c"/></marker><marker id="ah-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#6b7280"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#1f2937; }
+      .eq { font: 12px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#1f2937; }
+      .eqb { font: 700 13px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#111827; }
+      .hot { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#c2410c; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#047857; }
+    </style>
+  </defs>
+
+  <rect width="960" height="300" fill="#ffffff"/>
+  <text x="480" y="28" class="title" text-anchor="middle">图 26-3　位移增量跨子步累加，世界坐标先不动</text>
+  <text x="120" y="80" class="lab" text-anchor="middle">大步开始</text>
+  <rect x="70" y="100" width="100" height="36" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="120" y="124" class="eq" text-anchor="middle">Δp = 0</text>
+  <rect x="230" y="90" width="120" height="56" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="290" y="114" class="lab" text-anchor="middle">子步 1</text>
+  <text x="290" y="136" class="eq" text-anchor="middle">Δp += h v</text>
+  <rect x="400" y="90" width="120" height="56" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="460" y="114" class="lab" text-anchor="middle">子步 2</text>
+  <text x="460" y="136" class="eq" text-anchor="middle">Δp += h v</text>
+  <rect x="570" y="90" width="120" height="56" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="630" y="114" class="lab" text-anchor="middle">子步 3</text>
+  <text x="630" y="136" class="eq" text-anchor="middle">Δp += h v</text>
+  <rect x="740" y="90" width="120" height="56" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="800" y="114" class="lab" text-anchor="middle">子步 4</text>
+  <text x="800" y="136" class="eq" text-anchor="middle">Δp += h v</text>
+  <line x1="170" y1="118" x2="225" y2="118" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ah-n)"/>
+  <line x1="350" y1="118" x2="405" y2="118" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ah-n)"/>
+  <line x1="520" y1="118" x2="575" y2="118" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ah-n)"/>
+  <line x1="690" y1="118" x2="745" y2="118" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ah-n)"/>
+  <rect x="300" y="200" width="360" height="70" rx="8" fill="#fef3c7" stroke="#c2410c" stroke-width="2"/>
+  <text x="480" y="230" class="lab" text-anchor="middle">收尾才做一次</text>
+  <text x="480" y="254" class="small" text-anchor="middle">质心 += 最终的 Δp，朝向乘上累计转动</text>
+</svg>

@@ -17,3 +17,5 @@ AGENTS.md
 zig-out/
 .zig-cache/
 zig-pkg
+emsdk/
+build-wasm/

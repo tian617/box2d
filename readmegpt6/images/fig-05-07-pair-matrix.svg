@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 480" role="img" aria-labelledby="t d">
+  <title id="t">五种形状与十二种已注册配对</title>
+  <desc id="d">12 个绿色格是 primary 函数，橙色格翻转 A/B，3 个红格永不碰撞。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+      .tiny { font: 11px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+    </style>
+  </defs>
+
+  <rect width="880" height="480" fill="#ffffff"/>
+  <text x="440" y="28" text-anchor="middle" class="title">图 5-7　5 种形状：12 种已注册，3 种永不碰撞</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">行是接触里的 A，列是 B。绿色=primary 函数；橙色=翻转 A/B 后再调同一函数；红叉=没有函数。</text>
+  <rect x="16" y="64" width="848" height="400" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="218" y="96" text-anchor="middle" class="lab">圆 B</text>
+  <text x="354" y="96" text-anchor="middle" class="lab">胶囊 B</text>
+  <text x="490" y="96" text-anchor="middle" class="lab">线段 B</text>
+  <text x="626" y="96" text-anchor="middle" class="lab">多边形 B</text>
+  <text x="762" y="96" text-anchor="middle" class="lab">链段 B</text>
+  <text x="80" y="146" text-anchor="middle" class="lab">圆 A</text>
+  <rect x="154" y="114" width="128" height="54" rx="6" fill="#bbf7d0" stroke="#047857"/>
+  <text x="218" y="146" text-anchor="middle" class="ok">圆圆</text>
+  <rect x="290" y="114" width="128" height="54" rx="6" fill="#fed7aa" stroke="#c2410c"/>
+  <text x="354" y="146" text-anchor="middle" class="small">翻转为胶囊圆</text>
+  <rect x="426" y="114" width="128" height="54" rx="6" fill="#fed7aa" stroke="#c2410c"/>
+  <text x="490" y="146" text-anchor="middle" class="small">翻转为线段圆</text>
+  <rect x="562" y="114" width="128" height="54" rx="6" fill="#fed7aa" stroke="#c2410c"/>
+  <text x="626" y="146" text-anchor="middle" class="small">翻转为多边形圆</text>
+  <rect x="698" y="114" width="128" height="54" rx="6" fill="#fed7aa" stroke="#c2410c"/>
+  <text x="762" y="146" text-anchor="middle" class="small">翻转为链段圆</text>
+  <text x="80" y="208" text-anchor="middle" class="lab">胶囊 A</text>
+  <rect x="154" y="176" width="128" height="54" rx="6" fill="#bbf7d0" stroke="#047857"/>
+  <text x="218" y="208" text-anchor="middle" class="ok">胶囊圆</text>
+  <rect x="290" y="176" width="128" height="54" rx="6" fill="#bbf7d0" stroke="#047857"/>
+  <text x="354" y="208" text-anchor="middle" class="ok">胶囊胶囊</text>
+  <rect x="426" y="176" width="128" height="54" rx="6" fill="#fed7aa" stroke="#c2410c"/>
+  <text x="490" y="208" text-anchor="middle" class="small">翻转为线段胶囊</text>
+  <rect x="562" y="176" width="128" height="54" rx="6" fill="#fed7aa" stroke="#c2410c"/>
+  <text x="626" y="208" text-anchor="middle" class="small">翻转为多边形胶囊</text>
+  <rect x="698" y="176" width="128" height="54" rx="6" fill="#fed7aa" stroke="#c2410c"/>
+  <text x="762" y="208" text-anchor="middle" class="small">翻转为链段胶囊</text>
+  <text x="80" y="270" text-anchor="middle" class="lab">线段 A</text>
+  <rect x="154" y="238" width="128" height="54" rx="6" fill="#bbf7d0" stroke="#047857"/>
+  <text x="218" y="270" text-anchor="middle" class="ok">线段圆</text>
+  <rect x="290" y="238" width="128" height="54" rx="6" fill="#bbf7d0" stroke="#047857"/>
+  <text x="354" y="270" text-anchor="middle" class="ok">线段胶囊</text>
+  <rect x="426" y="238" width="128" height="54" rx="6" fill="#fecaca" stroke="#b91c1c"/>
+  <text x="490" y="270" text-anchor="middle" class="bad">不配对</text>
+  <rect x="562" y="238" width="128" height="54" rx="6" fill="#bbf7d0" stroke="#047857"/>
+  <text x="626" y="270" text-anchor="middle" class="ok">线段多边形</text>
+  <rect x="698" y="238" width="128" height="54" rx="6" fill="#fecaca" stroke="#b91c1c"/>
+  <text x="762" y="270" text-anchor="middle" class="bad">不配对</text>
+  <text x="80" y="332" text-anchor="middle" class="lab">多边形 A</text>
+  <rect x="154" y="300" width="128" height="54" rx="6" fill="#bbf7d0" stroke="#047857"/>
+  <text x="218" y="332" text-anchor="middle" class="ok">多边形圆</text>
+  <rect x="290" y="300" width="128" height="54" rx="6" fill="#bbf7d0" stroke="#047857"/>
+  <text x="354" y="332" text-anchor="middle" class="ok">多边形胶囊</text>
+  <rect x="426" y="300" width="128" height="54" rx="6" fill="#fed7aa" stroke="#c2410c"/>
+  <text x="490" y="332" text-anchor="middle" class="small">翻转为线段多边形</text>
+  <rect x="562" y="300" width="128" height="54" rx="6" fill="#bbf7d0" stroke="#047857"/>
+  <text x="626" y="332" text-anchor="middle" class="ok">多边形多边形</text>
+  <rect x="698" y="300" width="128" height="54" rx="6" fill="#fed7aa" stroke="#c2410c"/>
+  <text x="762" y="332" text-anchor="middle" class="small">翻转为链段多边形</text>
+  <text x="80" y="394" text-anchor="middle" class="lab">链段 A</text>
+  <rect x="154" y="362" width="128" height="54" rx="6" fill="#bbf7d0" stroke="#047857"/>
+  <text x="218" y="394" text-anchor="middle" class="ok">链段圆</text>
+  <rect x="290" y="362" width="128" height="54" rx="6" fill="#bbf7d0" stroke="#047857"/>
+  <text x="354" y="394" text-anchor="middle" class="ok">链段胶囊</text>
+  <rect x="426" y="362" width="128" height="54" rx="6" fill="#fecaca" stroke="#b91c1c"/>
+  <text x="490" y="394" text-anchor="middle" class="bad">不配对</text>
+  <rect x="562" y="362" width="128" height="54" rx="6" fill="#bbf7d0" stroke="#047857"/>
+  <text x="626" y="394" text-anchor="middle" class="ok">链段多边形</text>
+  <rect x="698" y="362" width="128" height="54" rx="6" fill="#fecaca" stroke="#b91c1c"/>
+  <text x="762" y="394" text-anchor="middle" class="bad">不配对</text>
+</svg>

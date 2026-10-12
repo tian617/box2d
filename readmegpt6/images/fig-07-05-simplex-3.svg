@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">三点单纯形：边区域或包围原点</title>
+  <desc id="d">三角形外最近可能是一条边；原点在内部则两形重叠。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 7-5　三点单纯形：不是拿到三角形就等于重叠</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">左：最近特征是边 12，删掉对面顶点。右：原点在内部，核心距离为零。</text>
+  <rect x="16" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="88" text-anchor="middle" class="lab">边区域</text>
+  <line x1="80" y1="260" x2="400" y2="260" stroke="#e5e7eb"/>
+  <line x1="224" y1="330" x2="224" y2="90" stroke="#e5e7eb"/>
+  <circle cx="224" cy="260" r="5" fill="#b91c1c"/>
+  <polygon points="150,180 300,180 224,110" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="140" y="170" class="small">w1</text>
+  <text x="306" y="170" class="small">w2</text>
+  <text x="230" y="104" class="small">w3 可删</text>
+  <circle cx="224" cy="180" r="6" fill="#047857"/>
+  <text x="234" y="200" class="ok">p=(0,2)</text>
+  <text x="224" y="320" text-anchor="middle" class="sub">距离 2 m，降回两点单纯形</text>
+
+  <rect x="448" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="88" text-anchor="middle" class="lab">包围原点</text>
+  <polygon points="620,140 520,140 620,260" fill="#fecaca" stroke="#b91c1c" stroke-width="2"/>
+  <circle cx="590" cy="180" r="6" fill="#b91c1c"/>
+  <text x="600" y="170" class="bad">0 在内部</text>
+  <text x="500" y="300" class="note">权重各 1/3</text>
+  <text x="500" y="324" class="note">这不给出穿透深度</text>
+  <text x="500" y="348" class="sub">只证明两个凸核已经重叠</text>
+
+</svg>

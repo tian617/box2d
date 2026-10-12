@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" role="img" aria-labelledby="t d">
+  <title id="t">六种配对如何归约到已有函数</title>
+  <desc id="d">线段当半径 0 的胶囊；胶囊可做成两顶点圆角多边形；链段胶囊也先做成多边形。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+      .tiny { font: 11px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+    </style>
+  </defs>
+
+  <rect width="880" height="420" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 5-13　六种配对不是新算法，而是先改写成已有形状再计算</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">读源码时先看它有没有调用 b2MakeCapsule，再决定该对哪一张表。</text>
+
+  <rect x="16" y="68" width="272" height="330" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="152" y="96" text-anchor="middle" class="lab">半径变成 0</text>
+  <text x="40" y="130" class="note">线段-圆</text>
+  <text x="40" y="154" class="ok">→ 胶囊-圆，rA=0</text>
+  <text x="40" y="186" class="note">线段-胶囊</text>
+  <text x="40" y="210" class="ok">→ 胶囊-胶囊，rA=0</text>
+  <text x="40" y="242" class="note">线段-多边形</text>
+  <text x="40" y="266" class="ok">→ 两顶点多边形，r=0</text>
+  <text x="40" y="306" class="small">数字例：把胶囊例的</text>
+  <text x="40" y="328" class="small">rA 改成 0 重算 s 即可</text>
+  <text x="40" y="360" class="tiny">专用函数：b2CollideSegmentAnd*</text>
+
+  <rect x="304" y="68" width="272" height="330" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="440" y="96" text-anchor="middle" class="lab">胶囊升级为多边形</text>
+  <text x="328" y="130" class="note">多边形-胶囊</text>
+  <text x="328" y="154" class="ok">→ 多边形-多边形</text>
+  <text x="328" y="186" class="note">链段-胶囊</text>
+  <text x="328" y="210" class="ok">→ 链段-多边形</text>
+  <text x="328" y="250" class="small">b2MakeCapsule：</text>
+  <text x="328" y="272" class="small">两个顶点 + 两侧法线</text>
+  <text x="328" y="294" class="small">+ 圆角半径</text>
+  <text x="328" y="330" class="tiny">不是把胶囊拆成圆和矩形</text>
+  <text x="328" y="352" class="tiny">而是一条带半径的边</text>
+
+  <rect x="592" y="68" width="272" height="330" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="728" y="96" text-anchor="middle" class="lab">三种不配对</text>
+  <text x="616" y="140" class="bad">线段 - 线段</text>
+  <text x="616" y="172" class="bad">链段 - 线段</text>
+  <text x="616" y="204" class="bad">链段 - 链段</text>
+  <text x="616" y="248" class="small">s_registers 里函数指针</text>
+  <text x="616" y="270" class="small">是 NULL，CreateContact</text>
+  <text x="616" y="292" class="small">直接返回。</text>
+  <text x="616" y="328" class="tiny">静态地形用链，动态体</text>
+  <text x="616" y="350" class="tiny">用圆/胶囊/多边形去碰它</text>
+
+</svg>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 360" role="img" aria-labelledby="t d">
+  <title id="t">单向接触：只能推不能拉</title>
+  <desc id="d">λ≥0，w≥0，λw=0。已经分离时冲量必须是 0。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="360" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 9-7　无黏附接触是互补条件，不是无条件等式</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">0 ≤ Λ ⊥ w ≥ 0。能自由离开；只有还在接近时才施加正冲量。</text>
+  <rect x="16" y="64" width="416" height="280" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="92" text-anchor="middle" class="lab">还在接近：q &lt; 0</text>
+  <line x1="50" y1="220" x2="380" y2="220" stroke="#6b7280" stroke-width="6"/>
+  <rect x="150" y="120" width="120" height="80" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <line x1="210" y1="200" x2="210" y2="150" stroke="#1d4ed8" stroke-width="2.4" marker-end="url(#ah-n)"/>
+  <text x="224" y="260" text-anchor="middle" class="ok">Λ = −q / K &gt; 0</text>
+  <text x="224" y="284" text-anchor="middle" class="sub">把接近速度推到目标</text>
+
+  <rect x="448" y="64" width="416" height="280" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="92" text-anchor="middle" class="lab">已经离开：q ≥ 0</text>
+  <line x1="482" y1="240" x2="812" y2="240" stroke="#6b7280" stroke-width="6"/>
+  <rect x="582" y="100" width="120" height="80" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <text x="656" y="260" text-anchor="middle" class="ok">Λ = 0</text>
+  <text x="656" y="284" text-anchor="middle" class="bad">不能用负冲量把物体吸回来</text>
+
+</svg>

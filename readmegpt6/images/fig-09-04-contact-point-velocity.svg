@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">接触点速度含转动项</title>
+  <desc id="d">ω=2，r=(0.5,-0.5)，转动贡献 (1,1)。真正约束的是 n·vrel。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 9-4　接触点速度不是质心速度</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">ω=2，r=(0.5, −0.5)，ω×r=(1,1)。即使质心静止，这个角点也在动。</text>
+  <rect x="16" y="64" width="848" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <rect x="300" y="120" width="200" height="160" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="400" cy="200" r="5" fill="#111827"/>
+  <text x="412" y="196" class="small">C 可静止</text>
+  <circle cx="500" cy="280" r="7" fill="#c2410c"/>
+  <line x1="400" y1="200" x2="492" y2="272" stroke="#c2410c" stroke-width="2"/>
+  <line x1="500" y1="280" x2="580" y2="200" stroke="#047857" stroke-width="2.6" marker-end="url(#ah-v)"/>
+  <text x="540" y="220" class="ok">ω × r = (1, 1)</text>
+  <path d="M 450 140 A 40 40 0 0 0 360 150" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#ah-p)"/>
+  <text x="80" y="140" class="note">vP = v + ω × r</text>
+  <text x="80" y="164" class="note">ω × r = (−ω ry, ω rx)</text>
+  <text x="80" y="200" class="note">相对速度还要两边相减</text>
+  <text x="80" y="224" class="ok">u = n · vrel</text>
+  <text x="80" y="256" class="bad">漏掉转动项：</text>
+  <text x="80" y="280" class="bad">正撞正常，边角全错</text>
+
+</svg>

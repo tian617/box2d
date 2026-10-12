@@ -9,8 +9,10 @@
 #include "core.h"
 #include "physics_world.h"
 #include "solver_set.h"
+#include "solver_trace.h"
 
 #include <stddef.h>
+#include <string.h>
 
 // contact separation for sub-stepping
 // s = s0 + dot(cB + rB - cA - rA, normal)
@@ -137,6 +139,18 @@ void b2PrepareContacts_Overflow( b2StepContext* context )
 	b2TracyCZoneEnd( prepare_overflow_contact );
 }
 
+static void b2TracePushContactPoint( b2StepContext* context, const b2ContactSim* sim, b2SolverTracePoint point )
+{
+	b2World* world = context->world;
+	b2Shape* shapeA = b2Array_Get( world->shapes, sim->shapeIdA );
+	b2Shape* shapeB = b2Array_Get( world->shapes, sim->shapeIdB );
+	point.bodyIdA = b2MakeBodyId( world, shapeA->bodyId );
+	point.bodyIdB = b2MakeBodyId( world, shapeB->bodyId );
+	point.impulseOnA = b2Neg( point.impulseOnB );
+	point.friction = sim->friction;
+	b2SolverTrace_AddPoint( world, &point );
+}
+
 void b2WarmStartContacts_Overflow( b2StepContext* context )
 {
 	b2TracyCZoneNC( warmstart_overflow_contact, "WarmStart Overflow Contact", b2_colorDarkOrange, true );
@@ -144,10 +158,12 @@ void b2WarmStartContacts_Overflow( b2StepContext* context )
 	b2ConstraintGraph* graph = context->graph;
 	b2GraphColor* color = graph->colors + B2_OVERFLOW_INDEX;
 	b2ContactConstraint* constraints = color->overflowConstraints;
+	b2ContactSim* contactSims = color->contactSims.data;
 	int contactCount = color->contactSims.count;
 	b2World* world = context->world;
 	b2SolverSet* awakeSet = b2Array_Get( world->solverSets, b2_awakeSet );
 	b2BodyState* states = awakeSet->bodyStates.data;
+	bool tracing = b2SolverTrace_IsActive( world );
 
 	// This is a dummy state to represent a static body because static bodies don't have a solver body.
 	b2BodyState dummyState = b2_identityBodyState;
@@ -155,6 +171,7 @@ void b2WarmStartContacts_Overflow( b2StepContext* context )
 	for ( int i = 0; i < contactCount; ++i )
 	{
 		b2ContactConstraint* constraint = constraints + i;
+		b2ContactSim* contactSim = contactSims + i;
 
 		int indexA = constraint->indexA - 1;
 		int indexB = constraint->indexB - 1;
@@ -189,6 +206,33 @@ void b2WarmStartContacts_Overflow( b2StepContext* context )
 
 			cp->totalNormalImpulse += cp->normalImpulse;
 
+			if ( tracing )
+			{
+				b2Vec2 dp = b2Sub( stateB->deltaPosition, stateA->deltaPosition );
+				b2Vec2 ds = b2Add( dp, b2Sub( b2RotateVector( stateB->deltaRotation, rB ), b2RotateVector( stateA->deltaRotation, rA ) ) );
+				b2Vec2 vrA = b2Add( vA, b2CrossSV( wA, rA ) );
+				b2Vec2 vrB = b2Add( vB, b2CrossSV( wB, rB ) );
+
+				b2SolverTracePoint row = { 0 };
+				row.pointIndex = j;
+				row.normal = normal;
+				row.tangent = tangent;
+				row.anchorA = rA;
+				row.anchorB = rB;
+				row.impulseOnB = P;
+				row.separation = cp->baseSeparation + b2Dot( ds, normal );
+				row.normalVelocity = b2Dot( b2Sub( vrB, vrA ), normal );
+				row.normalMass = cp->normalMass;
+				row.normalImpulseBefore = cp->normalImpulse;
+				row.normalImpulseDelta = cp->normalImpulse;
+				row.normalImpulseAfter = cp->normalImpulse;
+				row.totalNormalImpulse = cp->totalNormalImpulse;
+				row.tangentImpulseBefore = cp->tangentImpulse;
+				row.tangentImpulseDelta = cp->tangentImpulse;
+				row.tangentImpulseAfter = cp->tangentImpulse;
+				b2TracePushContactPoint( context, contactSim, row );
+			}
+
 			wA -= iA * b2Cross( rA, P );
 			vA = b2MulAdd( vA, -mA, P );
 			wB += iB * b2Cross( rB, P );
@@ -221,10 +265,12 @@ void b2SolveContacts_Overflow( b2StepContext* context, bool useBias )
 	b2ConstraintGraph* graph = context->graph;
 	b2GraphColor* color = graph->colors + B2_OVERFLOW_INDEX;
 	b2ContactConstraint* constraints = color->overflowConstraints;
+	b2ContactSim* contactSims = color->contactSims.data;
 	int contactCount = color->contactSims.count;
 	b2World* world = context->world;
 	b2SolverSet* awakeSet = b2Array_Get( world->solverSets, b2_awakeSet );
 	b2BodyState* states = awakeSet->bodyStates.data;
+	bool tracing = b2SolverTrace_IsActive( world );
 
 	float inv_h = context->inv_h;
 	const float contactSpeed = context->world->contactSpeed;
@@ -263,6 +309,9 @@ void b2SolveContacts_Overflow( b2StepContext* context, bool useBias )
 		int pointCount = constraint->pointCount;
 		float totalNormalImpulse = 0.0f;
 		bool stopRestitution = true;
+		b2ContactSim* contactSim = contactSims + i;
+		b2SolverTracePoint pending[2] = { 0 };
+		bool pendingUsed[2] = { false, false };
 
 		for ( int j = 0; j < pointCount; ++j )
 		{
@@ -326,6 +375,31 @@ void b2SolveContacts_Overflow( b2StepContext* context, bool useBias )
 
 			vB = b2MulAdd( vB, mB, P );
 			wB += iB * b2Cross( rB, P );
+
+			if ( tracing )
+			{
+				b2SolverTracePoint row = { 0 };
+				row.pointIndex = j;
+				row.normal = normal;
+				row.tangent = tangent;
+				row.anchorA = rA;
+				row.anchorB = rB;
+				row.impulseOnB = P;
+				row.separation = s;
+				row.normalVelocity = vn;
+				row.velocityBias = velocityBias;
+				row.massScale = massScale;
+				row.impulseScale = impulseScale;
+				row.normalMass = cp->normalMass;
+				row.normalImpulseBefore = cp->normalImpulse - impulse;
+				row.normalImpulseDelta = impulse;
+				row.normalImpulseAfter = cp->normalImpulse;
+				row.totalNormalImpulse = cp->totalNormalImpulse;
+				row.tangentImpulseBefore = cp->tangentImpulse;
+				row.tangentImpulseAfter = cp->tangentImpulse;
+				pending[j] = row;
+				pendingUsed[j] = true;
+			}
 		}
 
 		if ( useBias == false )
@@ -382,6 +456,27 @@ void b2SolveContacts_Overflow( b2StepContext* context, bool useBias )
 				wA -= iA * b2Cross( rA, P );
 				vB = b2MulAdd( vB, mB, P );
 				wB += iB * b2Cross( rB, P );
+
+				if ( tracing && pendingUsed[j] )
+				{
+					pending[j].tangentVelocity = vt;
+					pending[j].tangentImpulseBefore = cp->tangentImpulse - impulse;
+					pending[j].tangentImpulseDelta = impulse;
+					pending[j].tangentImpulseAfter = cp->tangentImpulse;
+					pending[j].frictionLimit = maxFriction;
+					pending[j].impulseOnB = b2Add( pending[j].impulseOnB, P );
+				}
+			}
+		}
+
+		if ( tracing )
+		{
+			for ( int j = 0; j < pointCount; ++j )
+			{
+				if ( pendingUsed[j] )
+				{
+					b2TracePushContactPoint( context, contactSim, pending[j] );
+				}
 			}
 		}
 
@@ -1947,12 +2042,302 @@ void b2PrepareContacts_Wide( b2SolverBlock block, b2StepContext* context )
 	b2TracyCZoneEnd( prepare_contact );
 }
 
+typedef struct b2WideTraceLane
+{
+	float separation;
+	float normalVelocity;
+	float velocityBias;
+	float massScale;
+	float impulseScale;
+	float normalMass;
+	float normalBefore;
+	float normalDelta;
+	float normalAfter;
+	float totalNormal;
+	float normalX, normalY;
+	float tangentX, tangentY;
+	float anchorAx, anchorAy;
+	float anchorBx, anchorBy;
+	float impulseBx, impulseBy;
+	float tangentVelocity;
+	float tangentBefore;
+	float tangentDelta;
+	float tangentAfter;
+	float frictionLimit;
+	int used;
+} b2WideTraceLane;
+
+static void b2TraceStoreLane( float* dst, b2FloatW value )
+{
+	_Alignas( 32 ) float buffer[B2_SIMD_WIDTH];
+	b2StoreW( buffer, value );
+	memcpy( dst, buffer, sizeof( float ) * B2_SIMD_WIDTH );
+}
+
+static bool b2TraceLaneActive( const b2GraphColor* color, int wideIndex, int lane, int pointIndex )
+{
+	int contactIndex = wideIndex * B2_SIMD_WIDTH + lane;
+	if ( contactIndex < 0 || contactIndex >= color->contactSims.count )
+	{
+		return false;
+	}
+
+	const b2ContactSim* sim = color->contactSims.data + contactIndex;
+	return pointIndex < sim->manifold.pointCount;
+}
+
+static void b2TraceReadAxes( const b2ContactConstraintWide* constraint, int pointIndex, float* normalX, float* normalY, float* tangentX,
+							 float* tangentY, float* normalMass )
+{
+	b2TraceStoreLane( normalX, constraint->normal.X );
+	b2TraceStoreLane( normalY, constraint->normal.Y );
+	b2TraceStoreLane( normalMass, pointIndex == 0 ? constraint->normalMass1 : constraint->normalMass2 );
+	for ( int lane = 0; lane < B2_SIMD_WIDTH; ++lane )
+	{
+		tangentX[lane] = normalY[lane];
+		tangentY[lane] = -normalX[lane];
+	}
+}
+
+static void b2TraceEmitLanes( b2StepContext* context, b2GraphColor* color, int wideIndex, int pointIndex, const b2WideTraceLane* lanes )
+{
+	for ( int lane = 0; lane < B2_SIMD_WIDTH; ++lane )
+	{
+		if ( lanes[lane].used == 0 )
+		{
+			continue;
+		}
+
+		int contactIndex = wideIndex * B2_SIMD_WIDTH + lane;
+		const b2ContactSim* sim = color->contactSims.data + contactIndex;
+		const b2WideTraceLane* laneRow = lanes + lane;
+
+		b2SolverTracePoint row = { 0 };
+		row.pointIndex = pointIndex;
+		row.normal = (b2Vec2){ laneRow->normalX, laneRow->normalY };
+		row.tangent = (b2Vec2){ laneRow->tangentX, laneRow->tangentY };
+		row.anchorA = (b2Vec2){ laneRow->anchorAx, laneRow->anchorAy };
+		row.anchorB = (b2Vec2){ laneRow->anchorBx, laneRow->anchorBy };
+		row.impulseOnB = (b2Vec2){ laneRow->impulseBx, laneRow->impulseBy };
+		row.separation = laneRow->separation;
+		row.normalVelocity = laneRow->normalVelocity;
+		row.velocityBias = laneRow->velocityBias;
+		row.massScale = laneRow->massScale;
+		row.impulseScale = laneRow->impulseScale;
+		row.normalMass = laneRow->normalMass;
+		row.normalImpulseBefore = laneRow->normalBefore;
+		row.normalImpulseDelta = laneRow->normalDelta;
+		row.normalImpulseAfter = laneRow->normalAfter;
+		row.totalNormalImpulse = laneRow->totalNormal;
+		row.tangentVelocity = laneRow->tangentVelocity;
+		row.tangentImpulseBefore = laneRow->tangentBefore;
+		row.tangentImpulseDelta = laneRow->tangentDelta;
+		row.tangentImpulseAfter = laneRow->tangentAfter;
+		row.frictionLimit = laneRow->frictionLimit;
+		b2TracePushContactPoint( context, sim, row );
+	}
+}
+
+static void b2TraceFillLanes( b2GraphColor* color, const b2ContactConstraintWide* constraint, int wideIndex, int pointIndex, b2WideTraceLane* lanes,
+							  b2FloatW separation, b2FloatW normalVelocity, b2FloatW velocityBias, b2FloatW massScale, b2FloatW impulseScale,
+							  b2FloatW lambdaBefore, b2FloatW lambdaAfter, b2FloatW totalNormal, b2Vec2W anchorA, b2Vec2W anchorB, b2FloatW impulseX,
+							  b2FloatW impulseY )
+{
+	_Alignas( 32 ) float s[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float vn[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float bias[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float mScale[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float iScale[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float before[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float after[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float total[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float nmass[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float nx[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float ny[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float tx[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float ty[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float ax[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float ay[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float bx[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float by[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float px[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float py[B2_SIMD_WIDTH];
+
+	b2TraceStoreLane( s, separation );
+	b2TraceStoreLane( vn, normalVelocity );
+	b2TraceStoreLane( bias, velocityBias );
+	b2TraceStoreLane( mScale, massScale );
+	b2TraceStoreLane( iScale, impulseScale );
+	b2TraceStoreLane( before, lambdaBefore );
+	b2TraceStoreLane( after, lambdaAfter );
+	b2TraceStoreLane( total, totalNormal );
+	b2TraceReadAxes( constraint, pointIndex, nx, ny, tx, ty, nmass );
+	b2TraceStoreLane( ax, anchorA.X );
+	b2TraceStoreLane( ay, anchorA.Y );
+	b2TraceStoreLane( bx, anchorB.X );
+	b2TraceStoreLane( by, anchorB.Y );
+	b2TraceStoreLane( px, impulseX );
+	b2TraceStoreLane( py, impulseY );
+
+	for ( int lane = 0; lane < B2_SIMD_WIDTH; ++lane )
+	{
+		b2WideTraceLane* row = lanes + lane;
+		*row = (b2WideTraceLane){ 0 };
+		if ( b2TraceLaneActive( color, wideIndex, lane, pointIndex ) == false )
+		{
+			continue;
+		}
+
+		row->used = 1;
+		row->separation = s[lane];
+		row->normalVelocity = vn[lane];
+		row->velocityBias = bias[lane];
+		row->massScale = mScale[lane];
+		row->impulseScale = iScale[lane];
+		row->normalMass = nmass[lane];
+		row->normalBefore = before[lane];
+		row->normalDelta = after[lane] - before[lane];
+		row->normalAfter = after[lane];
+		row->totalNormal = total[lane];
+		row->normalX = nx[lane];
+		row->normalY = ny[lane];
+		row->tangentX = tx[lane];
+		row->tangentY = ty[lane];
+		row->anchorAx = ax[lane];
+		row->anchorAy = ay[lane];
+		row->anchorBx = bx[lane];
+		row->anchorBy = by[lane];
+		row->impulseBx = px[lane];
+		row->impulseBy = py[lane];
+	}
+}
+
+static void b2TraceEmitWarm( b2StepContext* context, b2GraphColor* color, const b2ContactConstraintWide* constraint, int wideIndex, int pointIndex,
+							 const b2BodyStateW* bodyA, const b2BodyStateW* bodyB, b2Vec2W anchorA, b2Vec2W anchorB, b2FloatW impulseX, b2FloatW impulseY,
+							 b2FloatW normalImpulse, b2FloatW tangentImpulse, b2FloatW totalNormal )
+{
+	b2WideTraceLane lanes[B2_SIMD_WIDTH];
+	b2FloatW zero = b2ZeroW();
+	b2FloatW base = pointIndex == 0 ? constraint->baseSeparation1 : constraint->baseSeparation2;
+	b2TraceFillLanes( color, constraint, wideIndex, pointIndex, lanes, zero, zero, zero, zero, zero, normalImpulse, normalImpulse, totalNormal, anchorA,
+					  anchorB, impulseX, impulseY );
+
+	_Alignas( 32 ) float baseS[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float lambdaN[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float lambdaT[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float vAx[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float vAy[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float vBx[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float vBy[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float wA[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float wB[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float dpX[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float dpY[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float dqcA[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float dqsA[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float dqcB[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float dqsB[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float rax[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float ray[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float rbx[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float rby[B2_SIMD_WIDTH];
+
+	b2TraceStoreLane( baseS, base );
+	b2TraceStoreLane( lambdaN, normalImpulse );
+	b2TraceStoreLane( lambdaT, tangentImpulse );
+	b2TraceStoreLane( vAx, bodyA->v.X );
+	b2TraceStoreLane( vAy, bodyA->v.Y );
+	b2TraceStoreLane( vBx, bodyB->v.X );
+	b2TraceStoreLane( vBy, bodyB->v.Y );
+	b2TraceStoreLane( wA, bodyA->w );
+	b2TraceStoreLane( wB, bodyB->w );
+	b2TraceStoreLane( dpX, b2SubW( bodyB->dp.X, bodyA->dp.X ) );
+	b2TraceStoreLane( dpY, b2SubW( bodyB->dp.Y, bodyA->dp.Y ) );
+	b2TraceStoreLane( dqcA, bodyA->dq.C );
+	b2TraceStoreLane( dqsA, bodyA->dq.S );
+	b2TraceStoreLane( dqcB, bodyB->dq.C );
+	b2TraceStoreLane( dqsB, bodyB->dq.S );
+	b2TraceStoreLane( rax, anchorA.X );
+	b2TraceStoreLane( ray, anchorA.Y );
+	b2TraceStoreLane( rbx, anchorB.X );
+	b2TraceStoreLane( rby, anchorB.Y );
+
+	for ( int lane = 0; lane < B2_SIMD_WIDTH; ++lane )
+	{
+		b2WideTraceLane* row = lanes + lane;
+		if ( row->used == 0 )
+		{
+			continue;
+		}
+
+		float rsAx = dqcA[lane] * rax[lane] - dqsA[lane] * ray[lane];
+		float rsAy = dqsA[lane] * rax[lane] + dqcA[lane] * ray[lane];
+		float rsBx = dqcB[lane] * rbx[lane] - dqsB[lane] * rby[lane];
+		float rsBy = dqsB[lane] * rbx[lane] + dqcB[lane] * rby[lane];
+		float dsx = dpX[lane] + rsBx - rsAx;
+		float dsy = dpY[lane] + rsBy - rsAy;
+		row->separation = baseS[lane] + dsx * row->normalX + dsy * row->normalY;
+
+		float vrAx = vAx[lane] - wA[lane] * ray[lane];
+		float vrAy = vAy[lane] + wA[lane] * rax[lane];
+		float vrBx = vBx[lane] - wB[lane] * rby[lane];
+		float vrBy = vBy[lane] + wB[lane] * rbx[lane];
+		row->normalVelocity = ( vrBx - vrAx ) * row->normalX + ( vrBy - vrAy ) * row->normalY;
+		row->normalBefore = lambdaN[lane];
+		row->normalDelta = lambdaN[lane];
+		row->normalAfter = lambdaN[lane];
+		row->tangentBefore = lambdaT[lane];
+		row->tangentDelta = lambdaT[lane];
+		row->tangentAfter = lambdaT[lane];
+	}
+
+	b2TraceEmitLanes( context, color, wideIndex, pointIndex, lanes );
+}
+
+static void b2TraceAddTangent( b2WideTraceLane* lanes, b2FloatW tangentVelocity, b2FloatW tangentBefore, b2FloatW tangentDelta, b2FloatW tangentAfter,
+							   b2FloatW frictionLimit, b2FloatW impulseX, b2FloatW impulseY )
+{
+	_Alignas( 32 ) float vt[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float before[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float delta[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float after[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float limit[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float px[B2_SIMD_WIDTH];
+	_Alignas( 32 ) float py[B2_SIMD_WIDTH];
+
+	b2TraceStoreLane( vt, tangentVelocity );
+	b2TraceStoreLane( before, tangentBefore );
+	b2TraceStoreLane( delta, tangentDelta );
+	b2TraceStoreLane( after, tangentAfter );
+	b2TraceStoreLane( limit, frictionLimit );
+	b2TraceStoreLane( px, impulseX );
+	b2TraceStoreLane( py, impulseY );
+
+	for ( int lane = 0; lane < B2_SIMD_WIDTH; ++lane )
+	{
+		if ( lanes[lane].used == 0 )
+		{
+			continue;
+		}
+
+		lanes[lane].tangentVelocity = vt[lane];
+		lanes[lane].tangentBefore = before[lane];
+		lanes[lane].tangentDelta = delta[lane];
+		lanes[lane].tangentAfter = after[lane];
+		lanes[lane].frictionLimit = limit[lane];
+		lanes[lane].impulseBx += px[lane];
+		lanes[lane].impulseBy += py[lane];
+	}
+}
+
 void b2WarmStartContacts_Wide( b2SolverBlock block, b2StepContext* context )
 {
 	b2TracyCZoneNC( warm_start_contact, "Warm Start", b2_colorGreen, true );
 
 	b2BodyState* states = context->states;
-	b2ContactConstraintWide* constraints = context->graph->colors[block.colorIndex].wideConstraints;
+	b2GraphColor* color = context->graph->colors + block.colorIndex;
+	b2ContactConstraintWide* constraints = color->wideConstraints;
+	bool tracing = b2SolverTrace_IsActive( context->world );
 
 	for ( int i = block.startIndex; i < block.startIndex + block.count; ++i )
 	{
@@ -1971,6 +2356,11 @@ void b2WarmStartContacts_Wide( b2SolverBlock block, b2StepContext* context )
 			b2Vec2W P;
 			P.X = b2AddW( b2MulW( c->normalImpulse1, c->normal.X ), b2MulW( c->tangentImpulse1, tangentX ) );
 			P.Y = b2AddW( b2MulW( c->normalImpulse1, c->normal.Y ), b2MulW( c->tangentImpulse1, tangentY ) );
+			if ( tracing )
+			{
+				b2TraceEmitWarm( context, color, c, i, 0, &bA, &bB, rA, rB, P.X, P.Y, c->normalImpulse1, c->tangentImpulse1,
+								 b2AddW( c->totalNormalImpulse1, c->normalImpulse1 ) );
+			}
 			bA.w = b2MulSubW( bA.w, c->invIA, b2CrossW( rA, P ) );
 			bA.v.X = b2MulSubW( bA.v.X, c->invMassA, P.X );
 			bA.v.Y = b2MulSubW( bA.v.Y, c->invMassA, P.Y );
@@ -1989,6 +2379,11 @@ void b2WarmStartContacts_Wide( b2SolverBlock block, b2StepContext* context )
 			b2Vec2W P;
 			P.X = b2AddW( b2MulW( c->normalImpulse2, c->normal.X ), b2MulW( c->tangentImpulse2, tangentX ) );
 			P.Y = b2AddW( b2MulW( c->normalImpulse2, c->normal.Y ), b2MulW( c->tangentImpulse2, tangentY ) );
+			if ( tracing )
+			{
+				b2TraceEmitWarm( context, color, c, i, 1, &bA, &bB, rA, rB, P.X, P.Y, c->normalImpulse2, c->tangentImpulse2,
+								 b2AddW( c->totalNormalImpulse2, c->normalImpulse2 ) );
+			}
 			bA.w = b2MulSubW( bA.w, c->invIA, b2CrossW( rA, P ) );
 			bA.v.X = b2MulSubW( bA.v.X, c->invMassA, P.X );
 			bA.v.Y = b2MulSubW( bA.v.Y, c->invMassA, P.Y );
@@ -2016,6 +2411,7 @@ void b2PushContacts_Wide( b2SolverBlock block, b2StepContext* context )
 	b2BodyState* states = context->states;
 	b2GraphColor* color = context->graph->colors + block.colorIndex;
 	b2ContactConstraintWide* constraints = color->wideConstraints;
+	bool tracing = b2SolverTrace_IsActive( context->world );
 	b2FloatW inv_h = b2SplatW( context->inv_h );
 	b2FloatW contactSpeed = b2SplatW( -context->world->contactSpeed );
 	b2FloatW oneW = b2SplatW( 1.0f );
@@ -2098,6 +2494,14 @@ void b2PushContacts_Wide( b2SolverBlock block, b2StepContext* context )
 			bB.v.X = b2MulAddW( bB.v.X, c->invMassB, Px );
 			bB.v.Y = b2MulAddW( bB.v.Y, c->invMassB, Py );
 			bB.w = b2MulAddW( bB.w, c->invIB, b2SubW( b2MulW( rB.X, Py ), b2MulW( rB.Y, Px ) ) );
+
+			if ( tracing )
+			{
+				b2WideTraceLane lanes[B2_SIMD_WIDTH];
+				b2TraceFillLanes( color, c, wideIndex, 0, lanes, s, vn, velocityBias, pointMassScale, pointImpulseScale,
+								  b2SubW( c->normalImpulse1, impulse ), c->normalImpulse1, c->totalNormalImpulse1, rA, rB, Px, Py );
+				b2TraceEmitLanes( context, color, wideIndex, 0, lanes );
+			}
 		}
 
 		// second point non-penetration constraint
@@ -2149,6 +2553,14 @@ void b2PushContacts_Wide( b2SolverBlock block, b2StepContext* context )
 			bB.v.X = b2MulAddW( bB.v.X, c->invMassB, Px );
 			bB.v.Y = b2MulAddW( bB.v.Y, c->invMassB, Py );
 			bB.w = b2MulAddW( bB.w, c->invIB, b2SubW( b2MulW( rB.X, Py ), b2MulW( rB.Y, Px ) ) );
+
+			if ( tracing )
+			{
+				b2WideTraceLane lanes[B2_SIMD_WIDTH];
+				b2TraceFillLanes( color, c, wideIndex, 1, lanes, s, vn, velocityBias, pointMassScale, pointImpulseScale,
+								  b2SubW( c->normalImpulse2, impulse ), c->normalImpulse2, c->totalNormalImpulse2, rA, rB, Px, Py );
+				b2TraceEmitLanes( context, color, wideIndex, 1, lanes );
+			}
 		}
 
 		b2ScatterBodies( states, c->indexA, &bA );
@@ -2167,12 +2579,24 @@ void b2SolveContacts_Wide( b2SolverBlock block, b2StepContext* context )
 	b2ContactConstraintWide* constraints = color->wideConstraints;
 	b2FloatW inv_h = b2SplatW( context->inv_h );
 
+	bool tracing = b2SolverTrace_IsActive( context->world );
+	b2FloatW traceOne = b2SplatW( 1.0f );
+	b2FloatW traceZero = b2ZeroW();
+
 	for ( int wideIndex = block.startIndex; wideIndex < block.startIndex + block.count; ++wideIndex )
 	{
 		b2ContactConstraintWide* c = constraints + wideIndex;
 
 		b2BodyStateW bA = b2GatherBodies( states, c->indexA );
 		b2BodyStateW bB = b2GatherBodies( states, c->indexB );
+
+		b2WideTraceLane traceLane1[B2_SIMD_WIDTH];
+		b2WideTraceLane traceLane2[B2_SIMD_WIDTH];
+		if ( tracing )
+		{
+			memset( traceLane1, 0, sizeof( traceLane1 ) );
+			memset( traceLane2, 0, sizeof( traceLane2 ) );
+		}
 
 		b2FloatW restitutionMask1 = b2GreaterThanW( b2ZeroW(), c->negRestitutionVelocity1 );
 		b2FloatW restitutionMask2 = b2GreaterThanW( b2ZeroW(), c->negRestitutionVelocity2 );
@@ -2238,6 +2662,12 @@ void b2SolveContacts_Wide( b2SolverBlock block, b2StepContext* context )
 			bB.v.X = b2MulAddW( bB.v.X, c->invMassB, Px );
 			bB.v.Y = b2MulAddW( bB.v.Y, c->invMassB, Py );
 			bB.w = b2MulAddW( bB.w, c->invIB, b2SubW( b2MulW( rB.X, Py ), b2MulW( rB.Y, Px ) ) );
+
+			if ( tracing )
+			{
+				b2TraceFillLanes( color, c, wideIndex, 0, traceLane1, s, vn, velocityBias, traceOne, traceZero,
+								  b2SubW( c->normalImpulse1, impulse ), c->normalImpulse1, c->totalNormalImpulse1, rA, rB, Px, Py );
+			}
 		}
 
 		// second point non-penetration constraint
@@ -2294,6 +2724,12 @@ void b2SolveContacts_Wide( b2SolverBlock block, b2StepContext* context )
 			bB.v.X = b2MulAddW( bB.v.X, c->invMassB, Px );
 			bB.v.Y = b2MulAddW( bB.v.Y, c->invMassB, Py );
 			bB.w = b2MulAddW( bB.w, c->invIB, b2SubW( b2MulW( rB.X, Py ), b2MulW( rB.Y, Px ) ) );
+
+			if ( tracing )
+			{
+				b2TraceFillLanes( color, c, wideIndex, 1, traceLane2, s, vn, velocityBias, traceOne, traceZero,
+								  b2SubW( c->normalImpulse2, impulse ), c->normalImpulse2, c->totalNormalImpulse2, rA, rB, Px, Py );
+			}
 		}
 
 		// Turn off restitution when all points become separated on a lane.
@@ -2353,6 +2789,11 @@ void b2SolveContacts_Wide( b2SolverBlock block, b2StepContext* context )
 			bB.v.X = b2MulAddW( bB.v.X, c->invMassB, Px );
 			bB.v.Y = b2MulAddW( bB.v.Y, c->invMassB, Py );
 			bB.w = b2MulAddW( bB.w, c->invIB, b2SubW( b2MulW( rB.X, Py ), b2MulW( rB.Y, Px ) ) );
+
+			if ( tracing )
+			{
+				b2TraceAddTangent( traceLane1, vt, b2SubW( c->tangentImpulse1, impulse ), impulse, c->tangentImpulse1, maxFriction, Px, Py );
+			}
 		}
 
 		// second point friction constraint
@@ -2390,6 +2831,17 @@ void b2SolveContacts_Wide( b2SolverBlock block, b2StepContext* context )
 			bB.v.X = b2MulAddW( bB.v.X, c->invMassB, Px );
 			bB.v.Y = b2MulAddW( bB.v.Y, c->invMassB, Py );
 			bB.w = b2MulAddW( bB.w, c->invIB, b2SubW( b2MulW( rB.X, Py ), b2MulW( rB.Y, Px ) ) );
+
+			if ( tracing )
+			{
+				b2TraceAddTangent( traceLane2, vt, b2SubW( c->tangentImpulse2, impulse ), impulse, c->tangentImpulse2, maxFriction, Px, Py );
+			}
+		}
+
+		if ( tracing )
+		{
+			b2TraceEmitLanes( context, color, wideIndex, 0, traceLane1 );
+			b2TraceEmitLanes( context, color, wideIndex, 1, traceLane2 );
 		}
 
 		b2ScatterBodies( states, c->indexA, &bA );

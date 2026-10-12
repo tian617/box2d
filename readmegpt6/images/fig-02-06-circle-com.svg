@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 380" role="img" aria-labelledby="t d">
+  <title id="t">圆的质心就是圆心</title>
+  <desc id="d">均匀圆盘质心等于 shape.center。圆心可以不在刚体原点。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="380" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 2-6　圆：质量用 πR²，质心直接取圆心</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">例：center=(3,1) m，R=0.5 m，ρ=2 kg/m²。m=π/2 kg，c=(3,1) m。没有循环。</text>
+  <rect x="16" y="64" width="848" height="300" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <line x1="70" y1="320" x2="520" y2="320" stroke="#d1d5db" marker-end="url(#ah-ink)"/>
+  <line x1="70" y1="320" x2="70" y2="90" stroke="#d1d5db" marker-end="url(#ah-ink)"/>
+  <text x="510" y="340" class="small">x / m</text>
+  <text x="40" y="100" class="small">y</text>
+  <circle cx="310" cy="210" r="70" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="310" cy="210" r="6" fill="#047857"/>
+  <text x="322" y="206" class="ok">c = (3, 1)</text>
+  <text x="240" y="300" class="small">原点 (0,0) 可以不是圆心</text>
+  <text x="560" y="140" class="note">1. rr = R² = 0.25</text>
+  <text x="560" y="166" class="note">2. m = ρ π rr = π/2</text>
+  <text x="560" y="192" class="ok">3. c = shape.center</text>
+  <text x="560" y="226" class="sub">均匀圆盘的面积分精确等于圆心</text>
+  <text x="560" y="252" class="sub">圆心平移只改 c，不改绕自身质心的惯量</text>
+
+</svg>

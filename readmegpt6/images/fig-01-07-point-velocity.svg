@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">刚体上一点的速度等于质心速度加转动项</title>
+  <desc id="d">vC=(1,0)，r=(0,1)，ω=2，转动贡献 (-2,0)，点速度 (-1,0)。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 1-7　接触点速度：vP = vC + ω × r</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">质心向右 1 m/s，杆臂向上 1 m，ω=2 rad/s。转动项 (−2, 0)，该点实际向左 1 m/s。</text>
+  <rect x="16" y="64" width="848" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <rect x="280" y="140" width="220" height="160" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="390" cy="220" r="5" fill="#111827"/>
+  <text x="402" y="216" class="small">C</text>
+  <circle cx="390" cy="140" r="6" fill="#c2410c"/>
+  <text x="402" y="132" class="lab" fill="#c2410c">接触点 P</text>
+  <line x1="390" y1="220" x2="390" y2="150" stroke="#c2410c" stroke-width="2" marker-end="url(#ah-o)"/>
+  <text x="400" y="180" class="small" fill="#c2410c">r = (0, 1)</text>
+  <line x1="390" y1="220" x2="490" y2="220" stroke="#047857" stroke-width="2.4" marker-end="url(#ah-v)"/>
+  <text x="430" y="244" class="small" fill="#047857">vC = (1, 0)</text>
+  <line x1="390" y1="140" x2="270" y2="140" stroke="#7c3aed" stroke-width="2.6" marker-end="url(#ah-p)"/>
+  <text x="200" y="136" class="lab" fill="#7c3aed">vP = (−1, 0)</text>
+  <path d="M 450 200 A 40 40 0 0 0 430 160" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#ah-p)"/>
+  <text x="470" y="176" class="small" fill="#7c3aed">ω = 2</text>
+  <text x="80" y="320" class="note">质心向右，不代表刚体上每一点都向右。</text>
+  <text x="80" y="344" class="note">只看法向质心速度，边角碰撞和滚动都会算错。</text>
+
+</svg>

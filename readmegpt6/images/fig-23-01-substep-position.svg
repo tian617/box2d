@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" role="img">
+  <title>速度积分在子步中的位置</title>
+  <desc>子步内顺序：速度积分、热启动、求解、位置积分、松弛。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker><marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker><marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker><marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker><marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker><marker id="ah-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#b91c1c"/></marker><marker id="ah-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#6b7280"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#1f2937; }
+      .eq { font: 12px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#1f2937; }
+      .eqb { font: 700 13px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#111827; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#b91c1c; }
+      .hot { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#c2410c; }
+    </style>
+  </defs>
+
+  <rect width="960" height="330" fill="#ffffff"/>
+  <text x="480" y="28" class="title" text-anchor="middle">图 23-1　速度积分在一个子步里的位置</text>
+  <text x="480" y="50" class="sub" text-anchor="middle">子步里的五件事按固定顺序各做一遍；本章只讲第 ① 件。</text>
+  <rect x="12" y="100" width="86" height="112" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="55" y="136" class="lab" text-anchor="middle">准备</text>
+  <text x="55" y="158" class="small" text-anchor="middle">子步循环之前</text>
+  <text x="55" y="178" class="small" text-anchor="middle">只做 1 次</text>
+  <rect x="108" y="72" width="714" height="214" rx="10" fill="#ffffff" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="465" y="94" class="lab" text-anchor="middle">子步循环：N = 4 时，下面五件事整体重复 4 轮</text>
+  <rect x="120" y="112" width="130" height="112" rx="8" fill="#fed7aa" stroke="#c2410c" stroke-width="3"/>
+  <text x="185" y="142" class="lab" text-anchor="middle">① 速度积分</text>
+  <text x="185" y="170" class="small" text-anchor="middle">外力 重力 阻尼</text>
+  <text x="185" y="192" class="small" text-anchor="middle">只改 v 和 ω</text>
+  <rect x="260" y="112" width="130" height="112" rx="8" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="325" y="142" class="lab" text-anchor="middle">② 热启动</text>
+  <text x="325" y="170" class="small" text-anchor="middle">上一步的冲量</text>
+  <text x="325" y="192" class="small" text-anchor="middle">先打进速度</text>
+  <rect x="400" y="112" width="130" height="112" rx="8" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="465" y="142" class="lab" text-anchor="middle">③ 求解</text>
+  <text x="465" y="170" class="small" text-anchor="middle">带偏置解约束</text>
+  <text x="465" y="192" class="small" text-anchor="middle">改 v 和 ω</text>
+  <rect x="540" y="112" width="130" height="112" rx="8" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="605" y="142" class="lab" text-anchor="middle">④ 位置积分</text>
+  <text x="605" y="170" class="small" text-anchor="middle">用新速度走位置</text>
+  <text x="605" y="192" class="small" text-anchor="middle">推进 p 和朝向</text>
+  <rect x="680" y="112" width="130" height="112" rx="8" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="745" y="142" class="lab" text-anchor="middle">⑤ 松弛</text>
+  <text x="745" y="170" class="small" text-anchor="middle">关偏置再解一遍</text>
+  <text x="745" y="192" class="small" text-anchor="middle">摩擦恢复在此</text>
+  <line x1="250" y1="168" x2="260" y2="168" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <line x1="390" y1="168" x2="400" y2="168" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <line x1="530" y1="168" x2="540" y2="168" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <line x1="670" y1="168" x2="680" y2="168" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <line x1="185" y1="260" x2="185" y2="228" stroke="#c2410c" stroke-width="2.5" marker-end="url(#ah-o)"/>
+  <text x="198" y="254" class="hot" text-anchor="start">本章主角：只读 F、τ、阻尼、g，只写 v、ω</text>
+  <rect x="834" y="100" width="114" height="112" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="891" y="130" class="lab" text-anchor="middle">收尾</text>
+  <text x="891" y="154" class="small" text-anchor="middle">存冲量</text>
+  <text x="891" y="174" class="small" text-anchor="middle">位置写回刚体</text>
+  <text x="891" y="194" class="small" text-anchor="middle">清空力和力矩</text>
+  <text x="891" y="232" class="small" text-anchor="middle">全部子步之后</text>
+  <text x="480" y="312" class="note" text-anchor="middle">② ③ ⑤ 在解约束；① ④ 在推进时间。约束扫几遍和子步走几轮是两回事。</text>
+</svg>

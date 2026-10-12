@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">转动惯量由 r² 加权</title>
+  <desc id="d">刚体绕质心转动时，微元速率 v=ωr，动能出现 r²，从而定义 I=∫ r² dm。</desc>
+
+  <defs>
+
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+
+    <style>
+
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .eq { font: 700 14px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 2a-2　绕轴转动时，速率与距离成正比，动能带出 r²</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">同一 ω 下，离轴越远的小块跑得越快。把 ½mv² 加起来，系数就是 I。</text>
+
+  <rect x="16" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="88" text-anchor="middle" class="lab">刚体绕质心 C 匀速转动</text>
+  <circle cx="210" cy="220" r="92" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="210" cy="220" r="5" fill="#111827"/>
+  <text x="222" y="214" class="small">C</text>
+  <line x1="210" y1="220" x2="286" y2="164" stroke="#c2410c" stroke-width="2.2" marker-end="url(#ah-o)"/>
+  <text x="232" y="178" class="small" fill="#c2410c">r</text>
+  <circle cx="292" cy="160" r="10" fill="#047857"/>
+  <text x="306" y="148" class="small" fill="#047857">dm</text>
+  <line x1="292" y1="160" x2="348" y2="236" stroke="#047857" stroke-width="2.6" marker-end="url(#ah-v)"/>
+  <text x="330" y="188" class="small" fill="#047857">v = ω r</text>
+  <path d="M 248 248 A 40 40 0 0 0 172 258" fill="none" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#ah-p)"/>
+  <text x="224" y="348" text-anchor="middle" class="note">ω 对整块刚体相同；v 随 r 变</text>
+  <text x="224" y="368" text-anchor="middle" class="sub">切向速度，垂直于半径</text>
+
+  <rect x="448" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="88" text-anchor="middle" class="lab">把所有小块的动能加起来</text>
+  <text x="656" y="150" text-anchor="middle" class="eq">½ m v² = ½ m (ω r)²</text>
+  <text x="656" y="186" text-anchor="middle" class="eq">= ½ (m r²) ω²</text>
+  <text x="656" y="240" text-anchor="middle" class="ok">E转 = ½ I ω²</text>
+  <text x="656" y="274" text-anchor="middle" class="lab">I = Σ mᵢ rᵢ² = ∫ r² dm</text>
+  <text x="656" y="320" text-anchor="middle" class="note">单位：kg·m²</text>
+  <text x="656" y="348" text-anchor="middle" class="sub">I 是为了让转动动能长得像 ½mv²</text>
+  <text x="656" y="368" text-anchor="middle" class="sub">才被单独拢出来的系数</text>
+
+</svg>

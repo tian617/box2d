@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440" role="img" aria-labelledby="t d">
+  <title id="t">复合刚体的质心与惯量</title>
+  <desc id="d">质心是各块质心的质量加权。总惯量是各块自身惯量加平行轴项。</desc>
+
+  <defs>
+
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+
+    <style>
+
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .eq { font: 700 14px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+
+    </style>
+  </defs>
+
+  <rect width="880" height="440" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 2a-4　合并：质心按质量加权，惯量先搬轴再相加</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">第一遍求 C。第二遍把每块的 I_C 用 m d² 搬到总质心。不能把各块自己的 I_C 直接加。</text>
+
+  <rect x="16" y="64" width="416" height="360" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="88" text-anchor="middle" class="lab">质心：质量加权，不是两圆心连线中点</text>
+  <circle cx="120" cy="230" r="36" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="120" cy="230" r="5" fill="#111827"/>
+  <text x="120" y="186" text-anchor="middle" class="small">A  2 kg</text>
+  <text x="120" y="284" text-anchor="middle" class="sub">cA=(0,0)</text>
+  <circle cx="310" cy="250" r="52" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <circle cx="310" cy="250" r="5" fill="#111827"/>
+  <text x="310" y="196" text-anchor="middle" class="small">B  4 kg</text>
+  <text x="310" y="318" text-anchor="middle" class="sub">cB=(3,1)</text>
+  <line x1="120" y1="230" x2="310" y2="250" stroke="#9ca3af" stroke-dasharray="5 4"/>
+  <circle cx="215" cy="240" r="4" fill="#9ca3af"/>
+  <text x="215" y="160" text-anchor="middle" class="sub">几何中点</text>
+  <line x1="215" y1="168" x2="215" y2="236" stroke="#9ca3af" stroke-dasharray="3 3"/>
+  <circle cx="247" cy="243" r="7" fill="#047857"/>
+  <text x="255" y="132" class="ok">总质心 C</text>
+  <line x1="255" y1="140" x2="247" y2="236" stroke="#047857" stroke-width="2"/>
+  <text x="224" y="368" text-anchor="middle" class="note">C = (mA cA + mB cB) / (mA+mB)</text>
+  <text x="224" y="392" text-anchor="middle" class="sub">更靠近较重的 B</text>
+
+  <rect x="448" y="64" width="416" height="360" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="88" text-anchor="middle" class="lab">惯量：每块 I_C + m‖c−C‖²</text>
+  <text x="656" y="150" text-anchor="middle" class="eq">A：I_A + mA dA²</text>
+  <text x="656" y="186" text-anchor="middle" class="eq">B：I_B + mB dB²</text>
+  <text x="656" y="250" text-anchor="middle" class="ok">I_C = Σ (I_i + m_i d_i²)</text>
+  <text x="656" y="300" text-anchor="middle" class="note" fill="#b91c1c">错：I_A + I_B  漏了搬轴</text>
+  <text x="656" y="360" text-anchor="middle" class="sub">dA=cA−C， dB=cB−C</text>
+
+</svg>

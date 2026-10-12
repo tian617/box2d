@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 392" role="img">
+  <title>力的生命周期</title>
+  <desc>力在大步前写入缓冲，所有子步读取同一份，大步收尾才清零。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker><marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker><marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker><marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker><marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker><marker id="ah-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#b91c1c"/></marker><marker id="ah-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#6b7280"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#1f2937; }
+      .eq { font: 12px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#1f2937; }
+      .eqb { font: 700 13px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#111827; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#b91c1c; }
+      .hot { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#c2410c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="392" fill="#ffffff"/>
+  <text x="440" y="28" class="title" text-anchor="middle">图 23-6　力的生命周期：一个大步里每个子步都读同一份 F</text>
+  <text x="440" y="50" class="sub" text-anchor="middle">力是“持续作用”：缓冲区在大步内保持不变，大步收尾才清零。</text>
+  <rect x="16" y="76" width="232" height="118" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="28" y="98" class="lab" text-anchor="start">大步开始前：游戏逻辑</text>
+  <text x="28" y="122" class="eq" text-anchor="start">b2Body_ApplyForce(F, 作用点)</text>
+  <text x="28" y="146" class="eq" text-anchor="start">force  += F</text>
+  <text x="28" y="168" class="eq" text-anchor="start">torque += r × F</text>
+  <text x="28" y="186" class="small" text-anchor="start">（r 从质心指向作用点）</text>
+  <line x1="248" y1="135" x2="276" y2="135" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#ah-p)"/>
+  <rect x="280" y="76" width="130" height="118" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/>
+  <text x="345" y="98" class="lab" text-anchor="middle">子步 1</text>
+  <text x="345" y="124" class="small" text-anchor="middle">读 force、torque</text>
+  <text x="345" y="146" class="eq" text-anchor="middle">Δv = h·F/m</text>
+  <text x="345" y="168" class="ok" text-anchor="middle">缓冲区不清零</text>
+  <line x1="410" y1="135" x2="418" y2="135" stroke="#c2410c" stroke-width="2" marker-end="url(#ah-o)"/>
+  <rect x="418" y="76" width="130" height="118" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/>
+  <text x="483" y="98" class="lab" text-anchor="middle">子步 2</text>
+  <text x="483" y="124" class="small" text-anchor="middle">读 force、torque</text>
+  <text x="483" y="146" class="eq" text-anchor="middle">Δv = h·F/m</text>
+  <text x="483" y="168" class="ok" text-anchor="middle">缓冲区不清零</text>
+  <line x1="548" y1="135" x2="556" y2="135" stroke="#c2410c" stroke-width="2" marker-end="url(#ah-o)"/>
+  <rect x="556" y="76" width="130" height="118" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/>
+  <text x="621" y="98" class="lab" text-anchor="middle">子步 3</text>
+  <text x="621" y="124" class="small" text-anchor="middle">读 force、torque</text>
+  <text x="621" y="146" class="eq" text-anchor="middle">Δv = h·F/m</text>
+  <text x="621" y="168" class="ok" text-anchor="middle">缓冲区不清零</text>
+  <line x1="686" y1="135" x2="694" y2="135" stroke="#c2410c" stroke-width="2" marker-end="url(#ah-o)"/>
+  <rect x="694" y="76" width="130" height="118" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/>
+  <text x="759" y="98" class="lab" text-anchor="middle">子步 4</text>
+  <text x="759" y="124" class="small" text-anchor="middle">读 force、torque</text>
+  <text x="759" y="146" class="eq" text-anchor="middle">Δv = h·F/m</text>
+  <text x="759" y="168" class="ok" text-anchor="middle">缓冲区不清零</text>
+  <text x="280" y="222" class="eqb" text-anchor="start">4 个子步合计：Σ h·F/m = N·(Δt/N)·F/m = Δt·F/m</text>
+  <rect x="280" y="248" width="544" height="68" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="292" y="272" class="lab" text-anchor="start">大步收尾 b2FinalizeBodiesTask</text>
+  <text x="292" y="296" class="eq" text-anchor="start">force = 0；torque = 0  （src/solver.c 第 631–633 行）</text>
+  <line x1="759" y1="194" x2="759" y2="248" stroke="#b91c1c" stroke-width="2.5" marker-end="url(#ah-r)"/>
+  <rect x="16" y="248" width="248" height="120" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="28" y="272" class="lab" text-anchor="start">对比：冲量</text>
+  <text x="28" y="296" class="eq" text-anchor="start">b2Body_ApplyLinearImpulse</text>
+  <text x="28" y="318" class="small" text-anchor="start">直接改 state 里的 v 和 ω，</text>
+  <text x="28" y="338" class="small" text-anchor="start">只发生一次，不进本循环。</text>
+  <text x="28" y="358" class="small" text-anchor="start">因此不能每个子步重复施加。</text>
+  <text x="560" y="352" class="bad" text-anchor="start">如果第一个子步后就清零：效果只剩 1/N。</text>
+  <text x="560" y="372" class="bad" text-anchor="start">如果每个子步都重新累加：效果变成 N 倍。</text>
+</svg>

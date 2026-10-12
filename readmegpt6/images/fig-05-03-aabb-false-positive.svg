@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">AABB 重叠不代表实体相交</title>
+  <desc id="d">两圆半径 1，圆心 (0,0) 与 (1.8,1.8)，AABB 重叠但圆心距约 2.55>2。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 5-3　包围盒相交，圆仍然可以分开</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">半径都是 1 m，圆心 (0,0) 与 (1.8,1.8)。AABB 各向重叠 0.2 m，但圆心距 ≈2.55 &gt; 2。</text>
+  <rect x="16" y="64" width="848" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <rect x="220" y="80" width="200" height="200" fill="#dbeafe" fill-opacity="0.45" stroke="#1d4ed8" stroke-dasharray="5 4"/>
+  <rect x="400" y="140" width="200" height="200" fill="#ffedd5" fill-opacity="0.45" stroke="#c2410c" stroke-dasharray="5 4"/>
+  <circle cx="320" cy="180" r="80" fill="#bfdbfe" fill-opacity="0.8" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="500" cy="240" r="80" fill="#fed7aa" fill-opacity="0.8" stroke="#c2410c" stroke-width="2"/>
+  <circle cx="320" cy="180" r="4" fill="#111827"/>
+  <circle cx="500" cy="240" r="4" fill="#111827"/>
+  <line x1="320" y1="180" x2="500" y2="240" stroke="#047857" stroke-width="2.2"/>
+  <text x="400" y="196" class="ok">距离 2.55 m</text>
+  <text x="80" y="320" class="note">AABB 只负责排除“明显不可能”的形状对。</text>
+  <text x="80" y="344" class="bad">重叠宽度不能直接当成穿透深度。</text>
+
+</svg>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 380" role="img" aria-labelledby="t d">
+  <title id="t">支撑映射：沿方向找最远点</title>
+  <desc id="d">support(A-B, d) = support(A,d) - support(B,-d)。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="380" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 7-2　支撑点：沿 d 走到形状最远的那个顶点</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">差集支撑 = A 沿 d 的最远点 − B 沿 −d 的最远点。方向乘正数不改变结果。</text>
+  <rect x="16" y="64" width="416" height="300" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="88" text-anchor="middle" class="lab">多边形 A 沿 d</text>
+  <polygon points="80,260 180,120 300,150 280,280 120,300" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <line x1="180" y1="220" x2="320" y2="100" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#ah-p)"/>
+  <text x="300" y="96" class="lab" fill="#7c3aed">d</text>
+  <circle cx="180" cy="120" r="7" fill="#047857"/>
+  <text x="190" y="112" class="ok">支撑点</text>
+  <text x="80" y="340" class="sub">点积最大的顶点获胜；平局保留更早的下标</text>
+
+  <rect x="448" y="64" width="416" height="300" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="88" text-anchor="middle" class="lab">B 要沿 −d 查询</text>
+  <rect x="520" y="150" width="160" height="120" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <line x1="600" y1="210" x2="500" y2="300" stroke="#c2410c" stroke-width="2.4" marker-end="url(#ah-o)"/>
+  <text x="470" y="320" class="small" fill="#c2410c">−d</text>
+  <circle cx="520" cy="270" r="7" fill="#047857"/>
+  <text x="470" y="140" class="ok">supportB(−d)</text>
+  <text x="470" y="340" class="note">(2,2) 与 (32,32) 会选出同一点</text>
+
+</svg>

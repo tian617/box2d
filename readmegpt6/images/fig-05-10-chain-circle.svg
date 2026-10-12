@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">链段与圆：单面碰撞和幽灵顶点</title>
+  <desc id="d">左：法线朝上，上方圆接触。中：下方圆被拒绝。右：角点属于前一段时本段拒绝。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+      .tiny { font: 11px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 5-10　链段-圆：只碰撞法线一侧，端点还要看幽灵顶点</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">地面链从右向左 (4,0)→(0,0)，右手法线朝上。圆半径 0.5。</text>
+
+  <rect x="16" y="64" width="272" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="152" y="90" text-anchor="middle" class="lab">正面：接触</text>
+  <line x1="40" y1="240" x2="250" y2="240" stroke="#1d4ed8" stroke-width="4"/>
+  <line x1="152" y1="240" x2="152" y2="190" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ah-n)"/>
+  <circle cx="152" cy="200" r="36" fill="#fed7aa" fill-opacity="0.75" stroke="#c2410c" stroke-width="2"/>
+  <circle cx="152" cy="236" r="5" fill="#047857"/>
+  <text x="152" y="310" text-anchor="middle" class="ok">offset&gt;0，s=−0.1</text>
+  <text x="152" y="334" text-anchor="middle" class="small">pA=(2,0)，n=(0,1)</text>
+  <text x="152" y="358" text-anchor="middle" class="tiny">地面必须从右向左画</text>
+
+  <rect x="304" y="64" width="272" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="440" y="90" text-anchor="middle" class="lab">背面：拒绝</text>
+  <line x1="328" y1="200" x2="538" y2="200" stroke="#1d4ed8" stroke-width="4"/>
+  <circle cx="440" cy="248" r="36" fill="#fecaca" fill-opacity="0.7" stroke="#b91c1c" stroke-width="2"/>
+  <text x="440" y="310" text-anchor="middle" class="bad">offset&lt;0，空流形</text>
+  <text x="440" y="334" text-anchor="middle" class="small">圆在法线另一侧</text>
+  <text x="440" y="358" text-anchor="middle" class="tiny">链是单面的，不能当双边墙</text>
+
+  <rect x="592" y="64" width="272" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="728" y="90" text-anchor="middle" class="lab">幽灵区：交给上一段</text>
+  <line x1="620" y1="220" x2="720" y2="220" stroke="#9ca3af" stroke-width="3" stroke-dasharray="6 4"/>
+  <line x1="720" y1="220" x2="830" y2="220" stroke="#1d4ed8" stroke-width="4"/>
+  <circle cx="690" cy="188" r="28" fill="#fed7aa" fill-opacity="0.75" stroke="#c2410c" stroke-width="2"/>
+  <text x="728" y="300" text-anchor="middle" class="bad">uPrev≤0，本段拒绝</text>
+  <text x="728" y="324" text-anchor="middle" class="small">圆心落在前一段 Voronoi</text>
+  <text x="728" y="348" text-anchor="middle" class="tiny">避免链折角处重复碰撞</text>
+
+</svg>

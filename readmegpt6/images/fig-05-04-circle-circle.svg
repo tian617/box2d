@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" role="img" aria-labelledby="t d">
+  <title id="t">圆圆接触：法线、见证点、中点</title>
+  <desc id="d">a=(1,2), b=(2.8,4.4), rA=2, rB=1.2, n=(0.6,0.8), s=-0.2。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="420" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 5-4　圆圆接触：沿圆心连线构造完整几何</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">a=(1,2)，b=(2.8,4.4)，rA=2，rB=1.2。d=(1.8,2.4)，ℓ=3，n=(0.6,0.8)，s=−0.2 m。</text>
+  <rect x="16" y="64" width="848" height="340" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <circle cx="260" cy="260" r="110" fill="#bfdbfe" fill-opacity="0.7" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="458" cy="96" r="66" fill="#fed7aa" fill-opacity="0.75" stroke="#c2410c" stroke-width="2"/>
+  <circle cx="260" cy="260" r="4" fill="#111827"/>
+  <circle cx="458" cy="96" r="4" fill="#111827"/>
+  <text x="200" y="270" class="lab" fill="#1d4ed8">A</text>
+  <text x="470" y="90" class="lab" fill="#c2410c">B</text>
+  <line x1="260" y1="260" x2="458" y2="96" stroke="#1d4ed8" stroke-width="2.2" marker-end="url(#ah-n)"/>
+  <text x="380" y="150" class="small" fill="#1d4ed8">n = (0.6, 0.8)</text>
+  <circle cx="326" cy="194" r="5" fill="#1d4ed8"/>
+  <text x="200" y="180" class="small" fill="#1d4ed8">cA=(2.2, 3.6)</text>
+  <circle cx="370" cy="158" r="5" fill="#c2410c"/>
+  <text x="390" y="200" class="small" fill="#c2410c">cB=(2.08, 3.44)</text>
+  <circle cx="348" cy="176" r="6" fill="#047857"/>
+  <text x="360" y="230" class="ok">代表点 p 取中点</text>
+  <text x="80" y="360" class="note">s = ℓ − rA − rB = −0.2。负值表示穿透，欧氏距离仍然非负。</text>
+  <text x="80" y="384" class="sub">同心圆没有唯一法线；当前源码可能得到零向量，不要凭印象补 (1,0)。</text>
+
+</svg>

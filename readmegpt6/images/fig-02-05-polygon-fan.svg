@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440" role="img" aria-labelledby="t d">
+  <title id="t">多边形质心：从第一个顶点扇形剖分再面积加权</title>
+  <desc id="d">矩形 (0,0)(4,0)(4,2)(0,2) 拆成两个三角形，面积各为 4，加权后质心 (2,1)。</desc>
+  <defs>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+    </style>
+  </defs>
+  <rect width="880" height="440" fill="#ffffff"/>
+  <text x="440" y="28" text-anchor="middle" class="title">图 2-5　多边形质心：扇形三角形的面积加权，不是网格积分</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">顶点 (0,0)、(4,0)、(4,2)、(0,2)。参考点取 v0。两个三角形面积都是 4，加权后 c=(2,1)。</text>
+  <rect x="16" y="64" width="416" height="360" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="88" text-anchor="middle" class="lab">三角形 1：(v0, v1, v2)</text>
+  <polygon points="80,320 360,320 360,180" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="70" y="344" class="small">v0 (0,0)</text>
+  <text x="330" y="344" class="small">v1 (4,0)</text>
+  <text x="370" y="176" class="small">v2 (4,2)</text>
+  <circle cx="266" cy="273" r="6" fill="#1d4ed8"/>
+  <text x="200" y="250" class="ok">c1 = (8/3, 2/3)</text>
+  <text x="224" y="390" text-anchor="middle" class="small">A1 = 4，相对质心 (e1+e2)/3</text>
+  <rect x="448" y="64" width="416" height="360" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="88" text-anchor="middle" class="lab">三角形 2：(v0, v2, v3)</text>
+  <polygon points="512,320 792,180 512,180" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <text x="500" y="344" class="small">v0 (0,0)</text>
+  <text x="800" y="176" class="small">v2 (4,2)</text>
+  <text x="500" y="172" class="small">v3 (0,2)</text>
+  <circle cx="605" cy="226" r="6" fill="#c2410c"/>
+  <text x="620" y="250" class="ok">c2 = (4/3, 4/3)</text>
+  <text x="656" y="390" text-anchor="middle" class="small">A2 = 4。加权：c = (A1 c1 + A2 c2) / 8 = (2, 1)</text>
+</svg>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">局部点先旋转再平移到世界</title>
+  <desc id="d">p=(10,4)，90°，xl=(2,1) 得到 xw=(9,6)。方向向量不加 p。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 1-6　点要旋转加平移，方向只旋转</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">xw = p + R xl。例：p=(10,4)，转 90°，xl=(2,1) → 旋转后 (−1,2) → 世界点 (9,6)。</text>
+  <rect x="16" y="64" width="848" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <line x1="60" y1="340" x2="820" y2="340" stroke="#e5e7eb"/>
+  <line x1="80" y1="350" x2="80" y2="80" stroke="#e5e7eb"/>
+  <circle cx="520" cy="260" r="5" fill="#111827"/>
+  <text x="532" y="256" class="lab">刚体原点 p=(10,4)</text>
+  <line x1="520" y1="260" x2="700" y2="260" stroke="#9ca3af" stroke-dasharray="4 3"/>
+  <line x1="520" y1="260" x2="520" y2="120" stroke="#9ca3af" stroke-dasharray="4 3"/>
+  <text x="708" y="256" class="small">局部 +x</text>
+  <text x="528" y="120" class="small">局部 +y（已转 90°）</text>
+  <circle cx="440" cy="140" r="7" fill="#c2410c"/>
+  <text x="454" y="136" class="lab" fill="#c2410c">xw = (9, 6)</text>
+  <line x1="520" y1="260" x2="448" y2="148" stroke="#047857" stroke-width="2.4" marker-end="url(#ah-v)"/>
+  <text x="360" y="210" class="small" fill="#047857">R xl = (−1, 2)</text>
+  <text x="80" y="120" class="note">反变换必须先减 p，再逆旋转</text>
+  <text x="80" y="144" class="bad">写成 Rᵀxw − p 通常是错的</text>
+  <text x="80" y="176" class="note">法线、速度方向：只做 Rv，不加 p</text>
+
+</svg>

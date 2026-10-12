@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">匀速圆圆扫掠：相对运动变成原点到线段</title>
+  <desc id="d">共同速度可消去。相对轨迹是线段，与半径和圆相交的时刻就是 TOI。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 8-2　圆圆连续碰撞：看相对圆心会不会走进半径和圆</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">q = b0−a0，u = vB−vA。碰撞边界 ‖q + uτ‖ = R。共同平移不改相对距离。</text>
+  <rect x="16" y="64" width="848" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <circle cx="200" cy="200" r="70" fill="#bfdbfe" fill-opacity="0.6" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="200" y="206" text-anchor="middle" class="lab" fill="#1d4ed8">A</text>
+  <circle cx="200" cy="200" r="130" fill="none" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="80" y="100" class="small" fill="#7c3aed">半径和 R 的安全圆</text>
+  <circle cx="420" cy="120" r="8" fill="#c2410c"/>
+  <text x="432" y="116" class="small" fill="#c2410c">相对起点 q</text>
+  <circle cx="620" cy="260" r="8" fill="#9ca3af"/>
+  <text x="632" y="256" class="small">步末相对位置</text>
+  <line x1="420" y1="120" x2="620" y2="260" stroke="#c2410c" stroke-width="2.4"/>
+  <circle cx="500" cy="176" r="7" fill="#047857"/>
+  <text x="512" y="172" class="ok">第一次碰到 R 的时刻 = TOI</text>
+  <text x="80" y="340" class="note">二次方程求根。负根、步外根都要丢掉。起点已经重叠则不是“即将发生”的穿越。</text>
+
+</svg>

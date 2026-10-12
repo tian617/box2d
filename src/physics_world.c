@@ -26,6 +26,7 @@
 #include "shape.h"
 #include "solver.h"
 #include "solver_set.h"
+#include "solver_trace.h"
 
 #include "box2d/box2d.h"
 #include "box2d/constants.h"
@@ -368,6 +369,9 @@ void b2DestroyWorld( b2WorldId worldId )
 	b2Array_Destroy( world->contactEndEvents[1] );
 	b2Array_Destroy( world->contactHitEvents );
 	b2Array_Destroy( world->jointEvents );
+	b2Array_Destroy( world->solverTraceFrames );
+	b2Array_Destroy( world->solverTraceBodies );
+	b2Array_Destroy( world->solverTracePoints );
 
 	int chainCapacity = world->chainShapes.count;
 	for ( int i = 0; i < chainCapacity; ++i )
@@ -920,6 +924,7 @@ void b2World_Step( b2WorldId worldId, float timeStep, int subStepCount )
 	b2TracyCZoneNC( world_step, "Step", b2_colorBox2DGreen, true );
 
 	world->locked = true;
+	b2SolverTrace_Reset( world );
 	world->activeTaskCount = 0;
 	world->taskCount = 0;
 

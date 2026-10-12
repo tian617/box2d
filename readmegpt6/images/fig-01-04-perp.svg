@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 360" role="img" aria-labelledby="t d">
+  <title id="t">左垂线与右垂线</title>
+  <desc id="d">v=(3,4) 的左垂线 (-4,3)，右垂线 (4,-3)。逆时针多边形外法线取右垂线。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="360" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 1-4　左垂线逆时针转 90°，右垂线顺时针转 90°</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">v=(3,4)。L(v)=(−4,3)，R(v)=(4,−3)。两者都与 v 垂直，长度仍是 5。</text>
+  <rect x="16" y="64" width="848" height="280" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <line x1="440" y1="300" x2="440" y2="80" stroke="#e5e7eb"/>
+  <line x1="220" y1="200" x2="700" y2="200" stroke="#e5e7eb"/>
+  <line x1="440" y1="200" x2="560" y2="40" stroke="#1f2937" stroke-width="2.6" marker-end="url(#ah-ink)"/>
+  <text x="568" y="50" class="lab">v = (3, 4)</text>
+  <line x1="440" y1="200" x2="280" y2="80" stroke="#1d4ed8" stroke-width="2.4" marker-end="url(#ah-n)"/>
+  <text x="200" y="80" class="lab" fill="#1d4ed8">左垂线 L = (−4, 3)</text>
+  <line x1="440" y1="200" x2="600" y2="320" stroke="#c2410c" stroke-width="2.4" marker-end="url(#ah-o)"/>
+  <text x="610" y="336" class="lab" fill="#c2410c">右垂线 R = (4, −3)</text>
+  <text x="80" y="300" class="note">逆时针多边形内部在边左侧</text>
+  <text x="80" y="322" class="note">外法线通常取边的右垂线再归一化</text>
+
+</svg>

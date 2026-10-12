@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">两点单纯形的三块区域</title>
+  <desc id="d">原点可能落在 w1 外侧、w2 外侧或线段内部。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 7-4　两点单纯形：原点可能落在端点外，也可能落在线段上</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">左：w1=(2,1)、w2=(4,1)，最近点是 w1，不能用无限直线上的 (0,1)。右：内部例 p=(−2,−2)。</text>
+  <rect x="16" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="88" text-anchor="middle" class="lab">端点区域</text>
+  <line x1="80" y1="220" x2="400" y2="220" stroke="#e5e7eb"/>
+  <line x1="100" y1="300" x2="100" y2="100" stroke="#e5e7eb"/>
+  <circle cx="100" cy="220" r="5" fill="#b91c1c"/>
+  <text x="70" y="210" class="bad">0</text>
+  <line x1="200" y1="180" x2="340" y2="180" stroke="#1d4ed8" stroke-width="3"/>
+  <circle cx="200" cy="180" r="6" fill="#1d4ed8"/>
+  <circle cx="340" cy="180" r="6" fill="#93c5fd"/>
+  <text x="200" y="166" class="small">w1</text>
+  <text x="340" y="166" class="small">w2</text>
+  <line x1="100" y1="220" x2="200" y2="184" stroke="#047857" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="224" y="320" text-anchor="middle" class="ok">保留 w1，丢掉直线投影</text>
+
+  <rect x="448" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="88" text-anchor="middle" class="lab">线段内部</text>
+  <line x1="500" y1="220" x2="820" y2="220" stroke="#e5e7eb"/>
+  <line x1="656" y1="320" x2="656" y2="90" stroke="#e5e7eb"/>
+  <circle cx="656" cy="220" r="5" fill="#b91c1c"/>
+  <text x="664" y="210" class="bad">0</text>
+  <line x1="560" y1="260" x2="720" y2="140" stroke="#1d4ed8" stroke-width="3"/>
+  <circle cx="560" cy="260" r="6" fill="#1d4ed8"/>
+  <circle cx="720" cy="140" r="6" fill="#1d4ed8"/>
+  <text x="520" y="274" class="small">w1(−3,−1)</text>
+  <text x="730" y="136" class="small">w2(−1,−3)</text>
+  <circle cx="608" cy="220" r="6" fill="#047857"/>
+  <text x="500" y="200" class="ok">p=(−2,−2)</text>
+  <text x="656" y="350" text-anchor="middle" class="sub">权重各 0.5，下一方向 −p</text>
+
+</svg>

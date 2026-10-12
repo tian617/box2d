@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" role="img">
+  <title>热启动冲量</title>
+  <desc>旧冲量沿法线作用在一对刚体上。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker><marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker><marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker><marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker><marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker><marker id="ah-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#b91c1c"/></marker><marker id="ah-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#6b7280"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#1f2937; }
+      .eq { font: 12px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#1f2937; }
+      .eqb { font: 700 13px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#111827; }
+      .hot { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#c2410c; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#047857; }
+    </style>
+  </defs>
+
+  <rect width="960" height="340" fill="#ffffff"/>
+  <text x="480" y="28" class="title" text-anchor="middle">图 24-2　一份旧冲量同时推开两个刚体</text>
+  <text x="480" y="50" class="sub" text-anchor="middle">法线从 A 指向 B。正的法向冲量把 B 沿法线推，把 A 沿反方向推。</text>
+  <rect x="70" y="110" width="200" height="120" rx="8" fill="#e5e7eb" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="170" y="160" class="lab" text-anchor="middle">A  地面</text>
+  <text x="170" y="186" class="small" text-anchor="middle">静态：1/m = 0</text>
+  <text x="170" y="208" class="small" text-anchor="middle">速度不变</text>
+  <rect x="390" y="90" width="160" height="110" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="470" y="140" class="lab" text-anchor="middle">B  箱子</text>
+  <text x="470" y="166" class="small" text-anchor="middle">m = 2 kg</text>
+  <text x="470" y="188" class="ok" text-anchor="middle">v 沿法线增加</text>
+  <line x1="270" y1="170" x2="385" y2="145" stroke="#c2410c" stroke-width="3" marker-end="url(#ah-o)"/>
+  <text x="300" y="140" class="hot" text-anchor="start">P = λ n</text>
+  <text x="80" y="280" class="note" text-anchor="start">λ 是上一子步留下的法向冲量，这一步不重新计算它的大小。</text>
+  <text x="80" y="304" class="note" text-anchor="start">切向冲量同样重放：P 里还有 λt · t。滚动阻力只改角速度。</text>
+</svg>

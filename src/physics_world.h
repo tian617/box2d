@@ -17,6 +17,10 @@ typedef struct b2Recording b2Recording;
 
 #include "box2d/types.h"
 
+b2DeclareArrayNative( b2SolverTraceFrame );
+b2DeclareArrayNative( b2SolverTraceBody );
+b2DeclareArrayNative( b2SolverTracePoint );
+
 b2DeclareArray( b2BodyMoveEvent );
 b2DeclareArray( b2ContactBeginTouchEvent );
 b2DeclareArray( b2ContactEndTouchEvent );
@@ -212,7 +216,14 @@ typedef struct b2World
 	bool locked;
 	bool enableWarmStarting;
 	bool enableContinuous;
+	bool enableSolverTrace;
 	bool inUse;
+
+	// Optional per-step solver trace. Arrays stay unallocated until tracing is enabled.
+	b2SolverTraceHeader solverTraceHeader;
+	b2Array( b2SolverTraceFrame ) solverTraceFrames;
+	b2Array( b2SolverTraceBody ) solverTraceBodies;
+	b2Array( b2SolverTracePoint ) solverTracePoints;
 } b2World;
 
 b2World* b2GetWorldFromId( b2WorldId id );

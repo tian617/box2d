@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 380" role="img" aria-labelledby="t d">
+  <title id="t">离散采样会漏掉中间穿越</title>
+  <desc id="d">小圆从薄墙左侧一步跳到右侧，起点终点都不重叠，发生隧穿。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="380" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 8-1　离散碰撞只看有限时刻：中间穿越可能完全看不见</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">小圆这一步从墙左到墙右。起点、终点都不与墙重叠，于是被当成“没有撞到”。</text>
+  <rect x="16" y="64" width="416" height="300" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="88" text-anchor="middle" class="lab">步开始：还没碰到</text>
+  <circle cx="140" cy="200" r="22" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <rect x="250" y="120" width="18" height="180" fill="#94a3b8"/>
+  <text x="224" y="330" text-anchor="middle" class="sub">离散检测：无接触</text>
+
+  <rect x="448" y="64" width="416" height="300" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="88" text-anchor="middle" class="lab">步结束：已经穿过去</text>
+  <rect x="560" y="120" width="18" height="180" fill="#94a3b8"/>
+  <circle cx="740" cy="200" r="22" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <line x1="180" y1="200" x2="720" y2="200" stroke="#b91c1c" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#ah-o)"/>
+  <text x="656" y="330" text-anchor="middle" class="bad">中间本该命中，却没被采样到</text>
+
+</svg>

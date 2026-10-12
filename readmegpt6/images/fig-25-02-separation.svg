@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" role="img">
+  <title>间隙两种情况</title>
+  <desc>正间隙用推测，负间隙用软约束。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker><marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker><marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker><marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker><marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker><marker id="ah-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#b91c1c"/></marker><marker id="ah-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#6b7280"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#1f2937; }
+      .eq { font: 12px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#1f2937; }
+      .eqb { font: 700 13px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#111827; }
+      .hot { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#c2410c; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#047857; }
+    </style>
+  </defs>
+
+  <rect width="960" height="300" fill="#ffffff"/>
+  <text x="480" y="28" class="title" text-anchor="middle">图 25-2　间隙 s 的两种处理</text>
+  <text x="480" y="50" class="sub" text-anchor="middle">s &gt; 0 是还没碰上；s &lt; 0 是已经陷进去。法线从地面指向箱子。</text>
+  <rect x="40" y="90" width="420" height="180" rx="8" fill="#f8fafc" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="250" y="118" class="lab" text-anchor="middle">还没碰上   s &gt; 0</text>
+  <rect x="150" y="150" width="140" height="40" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="220" y="176" class="small" text-anchor="middle">箱子</text>
+  <rect x="80" y="220" width="280" height="18" rx="2" fill="#e5e7eb" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="250" y="256" class="note" text-anchor="middle">目标：接近速度不要超过 s/h</text>
+  <rect x="500" y="90" width="420" height="180" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="1.5"/>
+  <text x="710" y="118" class="lab" text-anchor="middle">已经重叠   s &lt; 0</text>
+  <rect x="610" y="190" width="140" height="40" rx="8" fill="#fed7aa" stroke="#c2410c" stroke-width="1.5"/>
+  <text x="680" y="216" class="small" text-anchor="middle">箱子</text>
+  <rect x="540" y="214" width="280" height="18" rx="2" fill="#e5e7eb" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="710" y="256" class="note" text-anchor="middle">目标：用软弹簧慢慢推开</text>
+</svg>

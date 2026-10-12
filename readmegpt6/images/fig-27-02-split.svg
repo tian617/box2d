@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" role="img">
+  <title>求解与 Relax 分工</title>
+  <desc>两阶段共用求解器，开关不同。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker><marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker><marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker><marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker><marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker><marker id="ah-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#b91c1c"/></marker><marker id="ah-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#6b7280"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#1f2937; }
+      .eq { font: 12px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#1f2937; }
+      .eqb { font: 700 13px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#111827; }
+      .hot { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#c2410c; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#047857; }
+    </style>
+  </defs>
+
+  <rect width="960" height="320" fill="#ffffff"/>
+  <text x="480" y="28" class="title" text-anchor="middle">图 27-2　同一次接触，求解和 Relax 各管一块</text>
+  <rect x="40" y="80" width="420" height="200" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/>
+  <text x="250" y="110" class="lab" text-anchor="middle">③ 求解   useBias = true</text>
+  <text x="70" y="150" class="small" text-anchor="start">法向软约束（重叠时）</text>
+  <text x="70" y="178" class="small" text-anchor="start">推测接触（还有间隙时）</text>
+  <text x="70" y="206" class="small" text-anchor="start">单边：冲量 ≥ 0</text>
+  <text x="70" y="234" class="small" text-anchor="start">不做摩擦、不做反弹</text>
+  <rect x="500" y="80" width="420" height="200" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+  <text x="710" y="110" class="lab" text-anchor="middle">⑤ Relax   useBias = false</text>
+  <text x="530" y="150" class="small" text-anchor="start">重叠修正这一项关掉</text>
+  <text x="530" y="178" class="small" text-anchor="start">法向再修一次速度</text>
+  <text x="530" y="206" class="small" text-anchor="start">库仑摩擦、滚动阻力</text>
+  <text x="530" y="234" class="small" text-anchor="start">恢复系数（反弹）</text>
+</svg>

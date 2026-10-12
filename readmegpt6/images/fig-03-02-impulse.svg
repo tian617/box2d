@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 380" role="img" aria-labelledby="t d">
+  <title id="t">冲量是力对时间的积分</title>
+  <desc id="d">4 N 持续 0.1 s 得到 0.4 N·s。冲量直接改速度，不要再乘步长。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="380" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 3-2　冲量 J = ∫F dt：短时间里的动量变化</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">恒力 4 N 作用 0.1 s，J=0.4 N·s。对 m=2 kg：Δv=0.2 m/s。已经是冲量就不要再乘 h。</text>
+  <rect x="16" y="64" width="416" height="300" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="88" text-anchor="middle" class="lab">力对时间的面积就是冲量</text>
+  <line x1="70" y1="280" x2="380" y2="280" stroke="#1f2937" marker-end="url(#ah-ink)"/>
+  <line x1="70" y1="280" x2="70" y2="110" stroke="#1f2937" marker-end="url(#ah-ink)"/>
+  <text x="360" y="300" class="small">时间 t</text>
+  <text x="40" y="120" class="small">F</text>
+  <rect x="140" y="150" width="140" height="130" fill="#bbf7d0" stroke="#047857" stroke-width="2"/>
+  <text x="210" y="220" text-anchor="middle" class="lab" fill="#047857">面积 = 0.4</text>
+  <text x="210" y="320" text-anchor="middle" class="small">0.1 s</text>
+  <text x="124" y="144" class="small">4 N</text>
+
+  <rect x="448" y="64" width="416" height="300" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="88" text-anchor="middle" class="lab">碰撞为什么求冲量</text>
+  <text x="470" y="130" class="note">真实接触力很大、时间很短</text>
+  <text x="470" y="154" class="note">刚体模型不猜那个巨大的力</text>
+  <text x="470" y="178" class="note">直接求动量跳变 Δp = J</text>
+  <text x="470" y="214" class="ok">Δv = J / m</text>
+  <text x="470" y="238" class="ok">Δω = I⁻¹ (r × J)</text>
+  <text x="470" y="274" class="bad">不要把冲量再乘一次步长</text>
+  <text x="470" y="298" class="sub">单位已经是 N·s = kg·m/s</text>
+
+</svg>

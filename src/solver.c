@@ -19,6 +19,7 @@
 #include "sensor.h"
 #include "shape.h"
 #include "solver_set.h"
+#include "solver_trace.h"
 
 #include <limits.h>
 #include <stdbool.h>
@@ -1026,6 +1027,8 @@ static void b2SolverTask( void* taskContext )
 			return;
 		}
 
+		b2SolverTrace_BeginStep( context->world, context );
+
 		// Main thread synchronizes the workers and does work itself.
 		//
 		// This single task is able to fully complete all work even if all other workers are
@@ -1075,6 +1078,9 @@ static void b2SolverTask( void* taskContext )
 		b2PrepareJoints_Overflow( context );
 		b2PrepareContacts_Overflow( context );
 
+		b2SolverTrace_BeginFrame( context->world, b2_solverTracePrepare, -1 );
+		b2SolverTrace_CaptureBodies( context->world, context );
+
 		profile->prepareConstraints += b2GetMillisecondsAndReset( &ticks );
 
 		int graphSyncIndex = 1;
@@ -1092,9 +1098,13 @@ static void b2SolverTask( void* taskContext )
 			iterationStageIndex += 1;
 			bodySyncIndex += 1;
 
+			b2SolverTrace_BeginFrame( context->world, b2_solverTraceIntegrateVelocities, subStepIndex );
+			b2SolverTrace_CaptureBodies( context->world, context );
+
 			profile->integrateVelocities += b2GetMillisecondsAndReset( &ticks );
 
 			// Warm start constraints
+			b2SolverTrace_BeginFrame( context->world, b2_solverTraceWarmStart, subStepIndex );
 			b2WarmStartJoints_Overflow( context );
 			b2WarmStartContacts_Overflow( context );
 
@@ -1107,12 +1117,16 @@ static void b2SolverTask( void* taskContext )
 			}
 			graphSyncIndex += 1;
 
+			b2SolverTrace_CaptureBodies( context->world, context );
+
 			profile->warmStart += b2GetMillisecondsAndReset( &ticks );
 
 			// Solve constraints
 			bool useBias = true;
 			for ( int j = 0; j < ITERATIONS; ++j )
 			{
+				b2SolverTrace_BeginFrame( context->world, b2_solverTraceSolve, subStepIndex );
+
 				// Overflow constraints have lower priority. Typically these are dynamic-vs-dynamic.
 				b2SolveJoints_Overflow( context, useBias );
 				b2SolveContacts_Overflow( context, useBias );
@@ -1125,6 +1139,7 @@ static void b2SolverTask( void* taskContext )
 					iterationStageIndex += 1;
 				}
 				graphSyncIndex += 1;
+				b2SolverTrace_CaptureBodies( context->world, context );
 			}
 
 			profile->solveImpulses += b2GetMillisecondsAndReset( &ticks );
@@ -1136,12 +1151,16 @@ static void b2SolverTask( void* taskContext )
 			iterationStageIndex += 1;
 			bodySyncIndex += 1;
 
+			b2SolverTrace_BeginFrame( context->world, b2_solverTraceIntegratePositions, subStepIndex );
+			b2SolverTrace_CaptureBodies( context->world, context );
+
 			profile->integratePositions += b2GetMillisecondsAndReset( &ticks );
 
 			// Relax constraints
 			useBias = false;
 			for ( int j = 0; j < RELAX_ITERATIONS; ++j )
 			{
+				b2SolverTrace_BeginFrame( context->world, b2_solverTraceRelax, subStepIndex );
 				b2SolveJoints_Overflow( context, useBias );
 				b2SolveContacts_Overflow( context, useBias );
 				for ( int colorIndex = 0; colorIndex < activeColorCount; ++colorIndex )
@@ -1152,6 +1171,7 @@ static void b2SolverTask( void* taskContext )
 					iterationStageIndex += 1;
 				}
 				graphSyncIndex += 1;
+				b2SolverTrace_CaptureBodies( context->world, context );
 			}
 
 			profile->relaxImpulses += b2GetMillisecondsAndReset( &ticks );
@@ -1608,6 +1628,9 @@ void b2Solve( b2World* world, b2StepContext* stepContext )
 
 		// Finalize bodies. Must happen after the constraint solver and after island splitting.
 		b2ParallelFor( world, &b2FinalizeBodiesTask, awakeBodyCount, 64, stepContext );
+
+		b2SolverTrace_BeginFrame( world, b2_solverTraceCommit, -1 );
+		b2SolverTrace_CaptureBodies( world, stepContext );
 
 		b2StackFree( &world->stack, graphBlocks );
 		b2StackFree( &world->stack, jointBlocks );

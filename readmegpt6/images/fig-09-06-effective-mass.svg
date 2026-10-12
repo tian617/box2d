@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">偏心接触的有效质量更小</title>
+  <desc id="d">静态地面，B 的 r=(0.5,-0.5)，n=(0,1)，K=1.5，meff=2/3。接触点停住但质心可继续转开。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 9-6　有效质量：杆臂越大，同一冲量越容易把点转开</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">地面静态。B：m=1，I=0.5，r=(0.5,−0.5)，n=(0,1)，vy=−4。meff=2/3 kg，λ=8/3。</text>
+  <rect x="16" y="64" width="848" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <line x1="80" y1="300" x2="800" y2="300" stroke="#6b7280" stroke-width="8"/>
+  <rect x="360" y="140" width="160" height="140" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <circle cx="440" cy="210" r="5" fill="#111827"/>
+  <circle cx="520" cy="280" r="6" fill="#047857"/>
+  <text x="532" y="276" class="ok">接触点</text>
+  <line x1="440" y1="210" x2="514" y2="274" stroke="#c2410c" stroke-width="2"/>
+  <line x1="520" y1="292" x2="520" y2="230" stroke="#1d4ed8" stroke-width="2.2" marker-end="url(#ah-n)"/>
+  <text x="80" y="120" class="note">r × n = 0.5</text>
+  <text x="80" y="144" class="note">K = 1 + 2(0.5)² = 1.5</text>
+  <text x="80" y="168" class="ok">meff = 1/K = 2/3 kg</text>
+  <text x="80" y="200" class="note">消除接近需要 λ=8/3</text>
+  <text x="80" y="224" class="ok">接触点法向速度变 0</text>
+  <text x="80" y="248" class="note">质心仍有 vy=−4/3，并开始转</text>
+  <text x="80" y="280" class="sub">正下方接触时 meff=1，需要 4 N·s</text>
+
+</svg>

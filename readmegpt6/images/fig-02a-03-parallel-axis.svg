@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" role="img" aria-labelledby="t d">
+  <title id="t">平行轴定理的三项展开</title>
+  <desc id="d">I_O=∫|r+d|² dm 展开后，交叉项因质心定义消失，剩下 I_C + md²。</desc>
+
+  <defs>
+
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+
+    <style>
+
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .eq { font: 700 14px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+
+    </style>
+  </defs>
+
+  <rect width="880" height="420" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 2a-3　把 |r+d|² 拆成三项，中间那项积完是零</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">新轴 O 与质心轴 C 平行。P 是一小块。只有质心定义能让交叉项消失。</text>
+
+  <rect x="16" y="64" width="416" height="340" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="88" text-anchor="middle" class="lab">几何：O 新轴，C 质心，P 微元</text>
+  <line x1="88" y1="110" x2="88" y2="380" stroke="#c2410c" stroke-width="3"/>
+  <text x="98" y="128" class="lab" fill="#c2410c">新轴 O</text>
+  <circle cx="88" cy="250" r="5" fill="#c2410c"/>
+  <text x="64" y="246" class="small">O</text>
+  <ellipse cx="250" cy="230" rx="110" ry="70" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="250" cy="230" r="6" fill="#111827"/>
+  <text x="260" y="224" class="lab">C</text>
+  <circle cx="330" cy="168" r="9" fill="#047857"/>
+  <text x="342" y="158" class="small" fill="#047857">P</text>
+  <line x1="88" y1="250" x2="244" y2="230" stroke="#c2410c" stroke-width="2.2" marker-end="url(#ah-o)"/>
+  <text x="150" y="228" class="small" fill="#c2410c">d</text>
+  <line x1="250" y1="230" x2="322" y2="174" stroke="#1d4ed8" stroke-width="2.2" marker-end="url(#ah-n)"/>
+  <text x="268" y="192" class="small" fill="#1d4ed8">r</text>
+  <line x1="88" y1="250" x2="322" y2="176" stroke="#047857" stroke-width="2.0" stroke-dasharray="6 4" marker-end="url(#ah-v)"/>
+  <text x="170" y="290" class="small" fill="#047857">r + d</text>
+  <text x="224" y="368" text-anchor="middle" class="note">P 相对 O 的位置 = r + d</text>
+  <text x="224" y="388" text-anchor="middle" class="sub">d 对所有微元相同；r 随 P 变</text>
+
+  <rect x="448" y="64" width="416" height="340" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="88" text-anchor="middle" class="lab">积分后三项</text>
+  <text x="656" y="140" text-anchor="middle" class="eq">①  ∫|r|² dm = I_C</text>
+  <text x="656" y="186" text-anchor="middle" class="eq">②  2d·∫ r dm = 0</text>
+  <text x="656" y="214" text-anchor="middle" class="sub">质心定义：相对 C，加权位置和为零</text>
+  <text x="656" y="260" text-anchor="middle" class="eq">③  |d|² ∫ dm = m|d|²</text>
+  <text x="656" y="318" text-anchor="middle" class="ok">I_O = I_C + m|d|²</text>
+  <text x="656" y="354" text-anchor="middle" class="note">一端必须是质心轴，两轴必须平行</text>
+
+</svg>

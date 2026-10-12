@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" role="img">
+  <title>阻尼缩放比：精确解、Box2D 的 Padé 写法、显式欧拉</title>
+  <desc>三条曲线在 z 很小时重合，z 变大后分开。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker><marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker><marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker><marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker><marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker><marker id="ah-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#b91c1c"/></marker><marker id="ah-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#6b7280"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#1f2937; }
+      .eq { font: 12px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#1f2937; }
+      .eqb { font: 700 13px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#111827; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#b91c1c; }
+      .hot { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#c2410c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="420" fill="#ffffff"/>
+  <text x="440" y="28" class="title" text-anchor="middle">图 23-4　一个子步里阻尼要把速度乘多少？三种写法比较</text>
+  <text x="440" y="50" class="sub" text-anchor="middle">横轴 z = h·c（子步时长乘阻尼系数，无量纲）；纵轴是这一步速度保留的比例。</text>
+  <line x1="190.0" y1="80" x2="190.0" y2="360" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="190.0" y="380" class="small" text-anchor="middle">0.5</text>
+  <line x1="310.0" y1="80" x2="310.0" y2="360" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="310.0" y="380" class="small" text-anchor="middle">1</text>
+  <line x1="430.0" y1="80" x2="430.0" y2="360" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="430.0" y="380" class="small" text-anchor="middle">1.5</text>
+  <line x1="550.0" y1="80" x2="550.0" y2="360" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="550.0" y="380" class="small" text-anchor="middle">2</text>
+  <line x1="70" y1="80.0" x2="550" y2="80.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="60" y="84.0" class="small" text-anchor="end">1</text>
+  <line x1="70" y1="150.0" x2="550" y2="150.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="60" y="154.0" class="small" text-anchor="end">0.5</text>
+  <line x1="70" y1="290.0" x2="550" y2="290.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="60" y="294.0" class="small" text-anchor="end">-0.5</text>
+  <line x1="70" y1="360.0" x2="550" y2="360.0" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="60" y="364.0" class="small" text-anchor="end">-1</text>
+  <line x1="70" y1="220" x2="550" y2="220" stroke="#6b7280" stroke-width="1.5"/>
+  <line x1="70" y1="80" x2="70" y2="360" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="60" y="224" class="small" text-anchor="end">0</text>
+  <text x="310.0" y="402" class="small" text-anchor="middle">z = h·c</text>
+  <polyline points="70.0,80.0 74.8,82.8 79.6,85.6 84.4,88.4 89.2,91.2 94.0,94.0 98.8,96.8 103.6,99.6 108.4,102.4 113.2,105.2 118.0,108.0 122.8,110.8 127.6,113.6 132.4,116.4 137.2,119.2 142.0,122.0 146.8,124.8 151.6,127.6 156.4,130.4 161.2,133.2 166.0,136.0 170.8,138.8 175.6,141.6 180.4,144.4 185.2,147.2 190.0,150.0 194.8,152.8 199.6,155.6 204.4,158.4 209.2,161.2 214.0,164.0 218.8,166.8 223.6,169.6 228.4,172.4 233.2,175.2 238.0,178.0 242.8,180.8 247.6,183.6 252.4,186.4 257.2,189.2 262.0,192.0 266.8,194.8 271.6,197.6 276.4,200.4 281.2,203.2 286.0,206.0 290.8,208.8 295.6,211.6 300.4,214.4 305.2,217.2 310.0,220.0 314.8,222.8 319.6,225.6 324.4,228.4 329.2,231.2 334.0,234.0 338.8,236.8 343.6,239.6 348.4,242.4 353.2,245.2 358.0,248.0 362.8,250.8 367.6,253.6 372.4,256.4 377.2,259.2 382.0,262.0 386.8,264.8 391.6,267.6 396.4,270.4 401.2,273.2 406.0,276.0 410.8,278.8 415.6,281.6 420.4,284.4 425.2,287.2 430.0,290.0 434.8,292.8 439.6,295.6 444.4,298.4 449.2,301.2 454.0,304.0 458.8,306.8 463.6,309.6 468.4,312.4 473.2,315.2 478.0,318.0 482.8,320.8 487.6,323.6 492.4,326.4 497.2,329.2 502.0,332.0 506.8,334.8 511.6,337.6 516.4,340.4 521.2,343.2 526.0,346.0 530.8,348.8 535.6,351.6 540.4,354.4 545.2,357.2 550.0,360.0" fill="none" stroke="#b91c1c" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <polyline points="70.0,80.0 74.8,82.8 79.6,85.5 84.4,88.2 89.2,90.8 94.0,93.3 98.8,95.8 103.6,98.3 108.4,100.7 113.2,103.1 118.0,105.4 122.8,107.6 127.6,109.9 132.4,112.1 137.2,114.2 142.0,116.3 146.8,118.3 151.6,120.4 156.4,122.3 161.2,124.3 166.0,126.2 170.8,128.0 175.6,129.8 180.4,131.6 185.2,133.4 190.0,135.1 194.8,136.8 199.6,138.4 204.4,140.0 209.2,141.6 214.0,143.2 218.8,144.7 223.6,146.2 228.4,147.6 233.2,149.1 238.0,150.5 242.8,151.9 247.6,153.2 252.4,154.5 257.2,155.8 262.0,157.1 266.8,158.3 271.6,159.6 276.4,160.8 281.2,161.9 286.0,163.1 290.8,164.2 295.6,165.3 300.4,166.4 305.2,167.5 310.0,168.5 314.8,169.5 319.6,170.5 324.4,171.5 329.2,172.5 334.0,173.4 338.8,174.3 343.6,175.2 348.4,176.1 353.2,177.0 358.0,177.8 362.8,178.7 367.6,179.5 372.4,180.3 377.2,181.1 382.0,181.8 386.8,182.6 391.6,183.3 396.4,184.1 401.2,184.8 406.0,185.5 410.8,186.2 415.6,186.8 420.4,187.5 425.2,188.1 430.0,188.8 434.8,189.4 439.6,190.0 444.4,190.6 449.2,191.2 454.0,191.7 458.8,192.3 463.6,192.8 468.4,193.4 473.2,193.9 478.0,194.4 482.8,194.9 487.6,195.4 492.4,195.9 497.2,196.4 502.0,196.9 506.8,197.3 511.6,197.8 516.4,198.2 521.2,198.6 526.0,199.1 530.8,199.5 535.6,199.9 540.4,200.3 545.2,200.7 550.0,201.1" fill="none" stroke="#c2410c" stroke-width="2.5"/>
+  <polyline points="70.0,80.0 74.8,82.7 79.6,85.4 84.4,87.9 89.2,90.4 94.0,92.7 98.8,95.0 103.6,97.2 108.4,99.3 113.2,101.4 118.0,103.3 122.8,105.2 127.6,107.1 132.4,108.9 137.2,110.6 142.0,112.3 146.8,113.9 151.6,115.5 156.4,117.1 161.2,118.6 166.0,120.0 170.8,121.4 175.6,122.8 180.4,124.1 185.2,125.4 190.0,126.7 194.8,127.9 199.6,129.1 204.4,130.3 209.2,131.4 214.0,132.5 218.8,133.6 223.6,134.6 228.4,135.7 233.2,136.7 238.0,137.6 242.8,138.6 247.6,139.5 252.4,140.5 257.2,141.3 262.0,142.2 266.8,143.1 271.6,143.9 276.4,144.7 281.2,145.5 286.0,146.3 290.8,147.1 295.6,147.8 300.4,148.6 305.2,149.3 310.0,150.0 314.8,150.7 319.6,151.4 324.4,152.0 329.2,152.7 334.0,153.3 338.8,154.0 343.6,154.6 348.4,155.2 353.2,155.8 358.0,156.4 362.8,156.9 367.6,157.5 372.4,158.1 377.2,158.6 382.0,159.1 386.8,159.7 391.6,160.2 396.4,160.7 401.2,161.2 406.0,161.7 410.8,162.1 415.6,162.6 420.4,163.1 425.2,163.5 430.0,164.0 434.8,164.4 439.6,164.9 444.4,165.3 449.2,165.7 454.0,166.2 458.8,166.6 463.6,167.0 468.4,167.4 473.2,167.8 478.0,168.1 482.8,168.5 487.6,168.9 492.4,169.3 497.2,169.6 502.0,170.0 506.8,170.4 511.6,170.7 516.4,171.0 521.2,171.4 526.0,171.7 530.8,172.1 535.6,172.4 540.4,172.7 545.2,173.0 550.0,173.3" fill="none" stroke="#1d4ed8" stroke-width="2.5"/>
+  <line x1="72.4" y1="84" x2="72.4" y2="216" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="86" y="262" class="hot" text-anchor="start">z≈0.01 在最左端：</text>
+  <text x="86" y="282" class="hot" text-anchor="start">三条线几乎重合</text>
+  <rect x="590" y="76" width="274" height="130" rx="8" fill="#f8fafc" stroke="#e5e7eb" stroke-width="1.5"/>
+  <line x1="604" y1="98" x2="644" y2="98" stroke="#c2410c" stroke-width="2.5"/>
+  <text x="652" y="102" class="small" text-anchor="start">e^(−z)   精确解（连续物理）</text>
+  <line x1="604" y1="128" x2="644" y2="128" stroke="#1d4ed8" stroke-width="2.5"/>
+  <text x="652" y="132" class="small" text-anchor="start">1/(1+z)  Box2D 实际使用</text>
+  <line x1="604" y1="158" x2="644" y2="158" stroke="#b91c1c" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <text x="652" y="162" class="small" text-anchor="start">1−z      显式欧拉</text>
+  <text x="604" y="192" class="bad" text-anchor="start">显式写法 z&gt;1 会翻向，z&gt;2 会发散</text>
+  <rect x="590" y="222" width="274" height="158" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="604" y="244" class="lab" text-anchor="start">数值对照</text>
+  <text x="604" y="268" class="eqb" text-anchor="start">z</text>
+  <text x="660" y="268" class="eqb" text-anchor="start">1/(1+z)</text>
+  <text x="760" y="268" class="eqb" text-anchor="start">e^(−z)</text>
+  <text x="604" y="290" class="eq" text-anchor="start">0.01</text>
+  <text x="660" y="290" class="eq" text-anchor="start">0.990099</text>
+  <text x="760" y="290" class="eq" text-anchor="start">0.990050</text>
+  <text x="604" y="310" class="eq" text-anchor="start">0.1</text>
+  <text x="660" y="310" class="eq" text-anchor="start">0.909091</text>
+  <text x="760" y="310" class="eq" text-anchor="start">0.904837</text>
+  <text x="604" y="330" class="eq" text-anchor="start">1</text>
+  <text x="660" y="330" class="eq" text-anchor="start">0.500000</text>
+  <text x="760" y="330" class="eq" text-anchor="start">0.367879</text>
+  <text x="604" y="350" class="eq" text-anchor="start">2</text>
+  <text x="660" y="350" class="eq" text-anchor="start">0.333333</text>
+  <text x="760" y="350" class="eq" text-anchor="start">0.135335</text>
+  <text x="604" y="372" class="small" text-anchor="start">不翻向、不放大；代价是 z 大时衰减偏弱</text>
+</svg>

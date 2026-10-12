@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" role="img" aria-labelledby="t d">
+  <title id="t">两次裁剪得到接触区间端点</title>
+  <desc id="d">参考边两端的垂直半平面裁入射边，留下最多两个点。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="420" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 6-4　裁剪：用参考边两端的“门框”切入射边</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">候选点必须落在参考边投影区间 [0, L] 内。两刀之后最多剩两个端点。</text>
+  <rect x="16" y="64" width="848" height="340" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <line x1="260" y1="280" x2="620" y2="280" stroke="#1d4ed8" stroke-width="6"/>
+  <text x="440" y="308" text-anchor="middle" class="lab" fill="#1d4ed8">参考边，长度 L</text>
+  <line x1="260" y1="120" x2="260" y2="320" stroke="#7c3aed" stroke-width="2" stroke-dasharray="5 4"/>
+  <line x1="620" y1="120" x2="620" y2="320" stroke="#7c3aed" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="200" y="140" class="small" fill="#7c3aed">裁剪线 k=0</text>
+  <text x="630" y="140" class="small" fill="#7c3aed">裁剪线 k=L</text>
+  <line x1="180" y1="200" x2="720" y2="200" stroke="#c2410c" stroke-width="4"/>
+  <text x="730" y="196" class="lab" fill="#c2410c">入射边（更长）</text>
+  <circle cx="260" cy="200" r="7" fill="#047857"/>
+  <circle cx="620" cy="200" r="7" fill="#047857"/>
+  <text x="260" y="186" text-anchor="middle" class="ok">留下</text>
+  <text x="620" y="186" text-anchor="middle" class="ok">留下</text>
+  <text x="180" y="230" class="bad">切掉</text>
+  <text x="680" y="230" class="bad">切掉</text>
+  <text x="80" y="360" class="note">这两条裁剪线垂直于参考边，不一定等于原多边形的邻边。</text>
+  <text x="80" y="384" class="sub">平行退化时整段保留或整段删除，不能除以零。</text>
+
+</svg>

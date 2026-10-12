@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 380" role="img" aria-labelledby="t d">
+  <title id="t">转动惯量按距离平方加权</title>
+  <desc id="d">同样 2 kg，质量离轴越远越难转。圆盘是 0.5 mR²，薄环是 mR²。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="380" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 2-2　同样质量，离轴越远越难转动</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">点质量贡献 md²。距离扩大 2 倍，惯量贡献扩大 4 倍。</text>
+  <rect x="16" y="64" width="416" height="300" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="88" text-anchor="middle" class="lab">质量收拢在中心</text>
+  <circle cx="224" cy="200" r="70" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="224" cy="200" r="18" fill="#1d4ed8"/>
+  <text x="224" y="300" text-anchor="middle" class="ok">实心圆盘 IC = ½ m R²</text>
+  <text x="224" y="324" text-anchor="middle" class="sub">更容易转起来</text>
+
+  <rect x="448" y="64" width="416" height="300" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="88" text-anchor="middle" class="lab">质量集中在边缘</text>
+  <circle cx="656" cy="200" r="70" fill="none" stroke="#c2410c" stroke-width="16"/>
+  <circle cx="656" cy="200" r="4" fill="#111827"/>
+  <text x="656" y="300" text-anchor="middle" class="note">薄圆环 IC = m R²</text>
+  <text x="656" y="324" text-anchor="middle" class="sub">同样力矩下角加速度只有一半</text>
+
+</svg>

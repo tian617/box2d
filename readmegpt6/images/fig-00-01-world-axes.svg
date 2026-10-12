@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">世界坐标、接触法线与切向</title>
+  <desc id="d">向右为正 x，向上为正 y，逆时针为正转。法线 n 从 A 指向 B，切向取右垂线。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 0-1　世界坐标：向右 +x，向上 +y，逆时针为正</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">后续所有公式都按这套符号。屏幕若 y 向下，只在渲染时翻转，不要改一半物理公式。</text>
+  <rect x="16" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="88" text-anchor="middle" class="lab">坐标轴与正转</text>
+  <line x1="70" y1="300" x2="360" y2="300" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <line x1="90" y1="340" x2="90" y2="110" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <text x="350" y="320" class="lab">+x</text>
+  <text x="102" y="122" class="lab">+y</text>
+  <path d="M 180 300 A 70 70 0 0 0 250 230" fill="none" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#ah-p)"/>
+  <text x="248" y="268" class="small" fill="#7c3aed">正角度 / 正角速度</text>
+  <text x="248" y="288" class="small" fill="#7c3aed">逆时针</text>
+  <circle cx="90" cy="300" r="4" fill="#111827"/>
+  <text x="224" y="360" text-anchor="middle" class="sub">原点只是建模约定，不一定是质心</text>
+
+  <rect x="448" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="88" text-anchor="middle" class="lab">地面 A 与下落盒子 B</text>
+  <line x1="500" y1="300" x2="812" y2="300" stroke="#6b7280" stroke-width="8" stroke-linecap="square"/>
+  <text x="512" y="328" class="small">A 地面（可取静态）</text>
+  <rect x="606" y="168" width="100" height="112" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <circle cx="656" cy="224" r="4" fill="#111827"/>
+  <text x="668" y="220" class="small">质心</text>
+  <text x="656" y="252" text-anchor="middle" class="lab">B</text>
+  <line x1="656" y1="292" x2="656" y2="236" stroke="#1d4ed8" stroke-width="2.4" marker-end="url(#ah-n)"/>
+  <text x="670" y="262" class="small" fill="#1d4ed8">n = (0, 1)</text>
+  <line x1="656" y1="280" x2="730" y2="280" stroke="#c2410c" stroke-width="2.2" marker-end="url(#ah-o)"/>
+  <text x="690" y="300" class="small" fill="#c2410c">t = (1, 0)</text>
+  <text x="656" y="360" text-anchor="middle" class="sub">法线从 A 指向 B；切向取右垂线</text>
+
+</svg>

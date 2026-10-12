@@ -1564,3 +1564,110 @@ typedef struct b2DebugDraw
 /// Use this to initialize your drawing interface. This allows you to implement a sub-set
 /// of the drawing functions.
 B2_API b2DebugDraw b2DefaultDebugDraw( void );
+
+/// Phases recorded by the optional solver trace. One b2World_Step writes these in order:
+/// prepare once, then each sub-step, then commit after positions are written back.
+/// @ingroup world
+typedef enum b2SolverTracePhase
+{
+	b2_solverTracePrepare = 0,
+	b2_solverTraceIntegrateVelocities = 1,
+	b2_solverTraceWarmStart = 2,
+	b2_solverTraceSolve = 3,
+	b2_solverTraceIntegratePositions = 4,
+	b2_solverTraceRelax = 5,
+	b2_solverTraceCommit = 6,
+} b2SolverTracePhase;
+
+/// Softness and step size actually used by one world step.
+/// @ingroup world
+typedef struct b2SolverTraceHeader
+{
+	float dt;
+	float h;
+	float inv_h;
+	int subStepCount;
+	float contactHertz;
+	float contactDampingRatio;
+	float contactSpeed;
+	float contactBiasRate;
+	float contactMassScale;
+	float contactImpulseScale;
+	float staticBiasRate;
+	float staticMassScale;
+	float staticImpulseScale;
+} b2SolverTraceHeader;
+
+/// Rigid body state at the end of one solver phase.
+/// During a step the drawn pose is center + deltaPosition. Commit clears the delta and writes it into center.
+/// @ingroup world
+typedef struct b2SolverTraceBody
+{
+	b2BodyId bodyId;
+	b2Vec2 center;
+	float angle;
+	b2Vec2 deltaPosition;
+	b2Rot deltaRotation;
+	b2Vec2 linearVelocity;
+	float angularVelocity;
+	float invMass;
+} b2SolverTraceBody;
+
+/// One contact point, captured when that point's impulse is applied.
+/// impulseOnA is the impulse delivered to body A and impulseOnB is the impulse delivered to body B.
+/// @ingroup world
+typedef struct b2SolverTracePoint
+{
+	b2BodyId bodyIdA;
+	b2BodyId bodyIdB;
+	int pointIndex;
+	b2Vec2 normal;
+	b2Vec2 tangent;
+	b2Vec2 anchorA;
+	b2Vec2 anchorB;
+	b2Vec2 impulseOnA;
+	b2Vec2 impulseOnB;
+	float separation;
+	float normalVelocity;
+	float velocityBias;
+	float massScale;
+	float impulseScale;
+	float normalMass;
+	float normalImpulseBefore;
+	float normalImpulseDelta;
+	float normalImpulseAfter;
+	float totalNormalImpulse;
+	float tangentVelocity;
+	float tangentImpulseBefore;
+	float tangentImpulseDelta;
+	float tangentImpulseAfter;
+	float frictionLimit;
+	float friction;
+} b2SolverTracePoint;
+
+/// One recorded solver phase. Body and point rows live in the parallel arrays on b2SolverTrace.
+/// subStepIndex is -1 for prepare and commit.
+/// @ingroup world
+typedef struct b2SolverTraceFrame
+{
+	b2SolverTracePhase phase;
+	int subStepIndex;
+	int bodyBegin;
+	int bodyCount;
+	int pointBegin;
+	int pointCount;
+} b2SolverTraceFrame;
+
+/// View of the solver trace from the most recent b2World_Step.
+/// Pointers are invalid after the next step, after the trace is disabled, or after the world is destroyed.
+/// @ingroup world
+typedef struct b2SolverTrace
+{
+	b2SolverTraceHeader header;
+	const b2SolverTraceFrame* frames;
+	int frameCount;
+	const b2SolverTraceBody* bodies;
+	int bodyCount;
+	const b2SolverTracePoint* points;
+	int pointCount;
+} b2SolverTrace;

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">参考边与入射边</title>
+  <desc id="d">参考边来自最大分离一侧；入射边是另一形状上最相向的边。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 6-3　SAT 给出方向后，还要用参考边和入射边找接触点</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">只挡住中心点能阻止平移，挡不住盒子绕支撑区间两端倾倒。</text>
+  <rect x="16" y="64" width="848" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <rect x="220" y="220" width="280" height="80" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="360" y="268" text-anchor="middle" class="lab" fill="#1d4ed8">A</text>
+  <line x1="220" y1="220" x2="500" y2="220" stroke="#047857" stroke-width="6"/>
+  <text x="360" y="208" text-anchor="middle" class="ok">参考边：A 的顶边</text>
+  <rect x="260" y="120" width="320" height="110" fill="#fed7aa" fill-opacity="0.8" stroke="#c2410c" stroke-width="2"/>
+  <text x="420" y="170" text-anchor="middle" class="lab" fill="#c2410c">B</text>
+  <line x1="260" y1="230" x2="580" y2="230" stroke="#c2410c" stroke-width="5"/>
+  <text x="560" y="250" class="note">入射边：B 底边，与参考法线最反向</text>
+  <line x1="360" y1="220" x2="360" y2="170" stroke="#1d4ed8" stroke-width="2.2" marker-end="url(#ah-n)"/>
+  <text x="370" y="190" class="small" fill="#1d4ed8">n</text>
+  <text x="80" y="120" class="note">sA ≥ sB 时选 A 作参考</text>
+  <text x="80" y="144" class="note">入射边：argmin n·nB</text>
+  <text x="80" y="176" class="sub">点积越接近 −1，两面越相向</text>
+
+</svg>

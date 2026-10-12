@@ -89,11 +89,14 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 # link them, otherwise wasm-ld rejects --shared-memory. Top level only, so a FetchContent
 # consumer keeps control of its own threading model.
 if (EMSCRIPTEN AND PROJECT_IS_TOP_LEVEL)
-	set(EMSCRIPTEN_PTHREADS_COMPILER_FLAGS "-pthread -s USE_PTHREADS=1")
-	set(EMSCRIPTEN_PTHREADS_LINKER_FLAGS "${EMSCRIPTEN_PTHREADS_COMPILER_FLAGS} -s ALLOW_MEMORY_GROWTH")
-	string(APPEND CMAKE_C_FLAGS " ${EMSCRIPTEN_PTHREADS_COMPILER_FLAGS}")
-	string(APPEND CMAKE_CXX_FLAGS " ${EMSCRIPTEN_PTHREADS_COMPILER_FLAGS}")
-	string(APPEND CMAKE_EXE_LINKER_FLAGS " ${EMSCRIPTEN_PTHREADS_LINKER_FLAGS}")
+	option(BOX2D_EMSCRIPTEN_PTHREADS "Build the Emscripten library with pthreads" ON)
+	if (BOX2D_EMSCRIPTEN_PTHREADS)
+		set(EMSCRIPTEN_PTHREADS_COMPILER_FLAGS "-pthread -s USE_PTHREADS=1")
+		set(EMSCRIPTEN_PTHREADS_LINKER_FLAGS "${EMSCRIPTEN_PTHREADS_COMPILER_FLAGS} -s ALLOW_MEMORY_GROWTH")
+		string(APPEND CMAKE_C_FLAGS " ${EMSCRIPTEN_PTHREADS_COMPILER_FLAGS}")
+		string(APPEND CMAKE_CXX_FLAGS " ${EMSCRIPTEN_PTHREADS_COMPILER_FLAGS}")
+		string(APPEND CMAKE_EXE_LINKER_FLAGS " ${EMSCRIPTEN_PTHREADS_LINKER_FLAGS}")
+	endif()
 endif()
 
 add_subdirectory(src)
@@ -104,6 +107,7 @@ if(PROJECT_IS_TOP_LEVEL)
 	option(BOX2D_BENCHMARKS "Build the Box2D benchmarks" OFF)
 	option(BOX2D_DOCS "Build the Box2D documentation" OFF)
 	option(BOX2D_UNIT_TESTS "Build the Box2D unit tests" ON)
+	option(BOX2D_CONTACT_TRACE_DEMO "Build the contact-stepper Emscripten demo" OFF)
 	
 	# Needed for samples.exe to find box2d.dll
 	set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin")
@@ -145,6 +149,26 @@ if(PROJECT_IS_TOP_LEVEL)
 
 	if(BOX2D_DOCS)
 		add_subdirectory(docs)
+	endif()
+
+	if(EMSCRIPTEN AND BOX2D_CONTACT_TRACE_DEMO)
+		add_executable(contact_trace demo/contact-stepper/demo.c)
+		target_link_libraries(contact_trace PRIVATE box2d)
+		set_target_properties(contact_trace PROPERTIES
+			C_STANDARD 17
+			C_STANDARD_REQUIRED YES
+			OUTPUT_NAME contact_trace
+			RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/demo/contact-stepper"
+		)
+		target_link_options(contact_trace PRIVATE
+			"SHELL:-s MODULARIZE=1"
+			"SHELL:-s EXPORT_NAME=ContactTrace"
+			"SHELL:-s EXPORTED_FUNCTIONS=[_demo_reset,_demo_step,_demo_trace_json]"
+			"SHELL:-s EXPORTED_RUNTIME_METHODS=[cwrap,UTF8ToString]"
+			"SHELL:-s ALLOW_MEMORY_GROWTH=1"
+			"SHELL:-s ENVIRONMENT=web"
+			"SHELL:-s SINGLE_FILE=1"
+		)
 	endif()
 endif()
 

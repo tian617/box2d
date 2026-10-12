@@ -60,6 +60,8 @@ set(BOX2D_SOURCE_FILES
 	solver.c
 	solver.h
 	solver_set.c
+	solver_trace.c
+	solver_trace.h
 	solver_set.h
 	table.c
 	table.h

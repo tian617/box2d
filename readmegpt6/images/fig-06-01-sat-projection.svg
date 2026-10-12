@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" role="img" aria-labelledby="t d">
+  <title id="t">SAT：把二维重叠变成一维区间比较</title>
+  <desc id="d">沿单位法线投影两个凸多边形。区间分离则形状一定分离。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="420" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 6-1　SAT：沿一条轴看两个投影区间是否分开</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">凸多边形只要找到一条分离轴，就可以停止，不必再建立接触点。</text>
+  <rect x="16" y="64" width="848" height="340" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <polygon points="160,260 250,180 340,220 300,300 180,310" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="240" y="250" text-anchor="middle" class="lab" fill="#1d4ed8">A</text>
+  <polygon points="420,150 530,140 560,230 470,270 400,220" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <text x="480" y="200" text-anchor="middle" class="lab" fill="#c2410c">B</text>
+  <line x1="80" y1="360" x2="820" y2="200" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#ah-p)"/>
+  <text x="780" y="196" class="lab" fill="#7c3aed">轴 n</text>
+  <line x1="200" y1="380" x2="380" y2="380" stroke="#1d4ed8" stroke-width="8" stroke-linecap="round"/>
+  <text x="290" y="404" text-anchor="middle" class="small" fill="#1d4ed8">A 的投影</text>
+  <line x1="420" y1="380" x2="620" y2="380" stroke="#c2410c" stroke-width="8" stroke-linecap="round"/>
+  <text x="520" y="404" text-anchor="middle" class="small" fill="#c2410c">B 的投影</text>
+  <text x="650" y="120" class="ok">区间重叠：还不能判定分离</text>
+  <text x="650" y="144" class="note">继续试下一条边法线</text>
+  <text x="650" y="176" class="bad">任一轴区间分开</text>
+  <text x="650" y="200" class="bad">两个凸形一定不重叠</text>
+
+</svg>

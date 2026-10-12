@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">AABB 用两个一维区间判断</title>
+  <desc id="d">A=[-1,2]x[0,1] 与 B=[1.5,3]x[0.8,2] 相交；B 的 y 下界改成 1.01 就分离。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 5-2　AABB：x、y 两个区间都重叠才可能相交</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">l = 下界，u = 上界。检查某一维时，l_A 就是 A 在该轴上的下界。</text>
+  <rect x="16" y="64" width="848" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <line x1="80" y1="340" x2="820" y2="340" stroke="#d1d5db"/>
+  <line x1="80" y1="340" x2="80" y2="80" stroke="#d1d5db"/>
+  <rect x="160" y="220" width="240" height="80" fill="#bfdbfe" fill-opacity="0.7" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="280" y="264" text-anchor="middle" class="lab" fill="#1d4ed8">A</text>
+  <rect x="400" y="140" width="180" height="140" fill="#fed7aa" fill-opacity="0.55" stroke="#c2410c" stroke-width="2"/>
+  <text x="490" y="200" text-anchor="middle" class="lab" fill="#c2410c">B</text>
+  <rect x="400" y="220" width="40" height="60" fill="#86efac" fill-opacity="0.7" stroke="#047857" stroke-width="2"/>
+  <text x="420" y="210" text-anchor="middle" class="ok">交集</text>
+  <text x="80" y="100" class="note">x：l_A=−1, u_A=2；l_B=1.5, u_B=3 → [1.5, 2]</text>
+  <text x="80" y="124" class="note">y：l_A=0, u_A=1；l_B=0.8, u_B=2 → [0.8, 1]</text>
+  <text x="600" y="100" class="bad">若 B 的 y 下界改成 1.01</text>
+  <text x="600" y="124" class="bad">y 立刻分离，直接拒绝</text>
+
+</svg>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 380" role="img" aria-labelledby="t d">
+  <title id="t">点减点得到位移向量</title>
+  <desc id="d">PA=(2,1)，PB=(5,5)，d=(3,4)，长度 5，单位方向 (0.6,0.8)。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="380" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 1-1　点描述位置，两点相减才得到位移</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">例：PA=(2,1) m，PB=(5,5) m，则 d=PB−PA=(3,4) m，长度 5 m。</text>
+  <rect x="16" y="64" width="848" height="300" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <line x1="80" y1="320" x2="700" y2="320" stroke="#d1d5db"/>
+  <line x1="80" y1="320" x2="80" y2="90" stroke="#d1d5db"/>
+  <text x="690" y="340" class="small">x / m</text>
+  <text x="50" y="100" class="small">y / m</text>
+  <circle cx="200" cy="280" r="6" fill="#1d4ed8"/>
+  <circle cx="440" cy="120" r="6" fill="#c2410c"/>
+  <line x1="200" y1="280" x2="430" y2="128" stroke="#047857" stroke-width="2.6" marker-end="url(#ah-v)"/>
+  <text x="188" y="304" class="lab" fill="#1d4ed8">PA (2, 1)</text>
+  <text x="452" y="118" class="lab" fill="#c2410c">PB (5, 5)</text>
+  <text x="340" y="190" class="lab" fill="#047857">d = (3, 4)</text>
+  <text x="340" y="210" class="small" fill="#047857">单位方向 (0.6, 0.8)</text>
+  <text x="720" y="160" class="note">点 + 点 没有直接物理意义</text>
+  <text x="720" y="184" class="note">点 + 位移 = 新点</text>
+  <text x="720" y="208" class="note">零向量不能当接触法线</text>
+
+</svg>

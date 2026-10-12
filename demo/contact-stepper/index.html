@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>Box2D 接触求解单步</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #14181f;
+      --panel: #1d2430;
+      --line: #314056;
+      --text: #e7eef8;
+      --muted: #9aadc4;
+      --accent: #7eb6ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.45 "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      align-items: center;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    h1 { font-size: 16px; margin: 0 12px 0 0; font-weight: 650; }
+    button {
+      background: #2a3648;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    button:hover { border-color: var(--accent); }
+    #progress { color: var(--accent); font-weight: 650; }
+    main {
+      display: grid;
+      grid-template-columns: minmax(520px, 1fr) minmax(560px, 1.05fr);
+      gap: 12px;
+      padding: 12px;
+      align-items: start;
+    }
+    canvas {
+      width: 100%;
+      height: auto;
+      background: #10151c;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .side {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-height: calc(100vh - 76px);
+      overflow: auto;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    h2 { margin: 0 0 8px; font-size: 14px; }
+    .note { color: var(--muted); margin: 0 0 8px; font-size: 12px; }
+    .summary, .bodies, .points, .soft-row { display: grid; gap: 8px; }
+    .summary, .points, .soft-row { grid-template-columns: 1fr 1fr; }
+    .bodies { grid-template-columns: repeat(3, 1fr); }
+    .card {
+      background: #243044;
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+    .card.ground { box-shadow: inset 3px 0 0 #d2a15a; }
+    .card.stack { box-shadow: inset 3px 0 0 #7ea0d8; }
+    .card h3 { margin: 0 0 6px; font-size: 13px; font-weight: 650; }
+    .k { color: var(--muted); font-size: 12px; }
+    .big {
+      display: block;
+      margin-top: 2px;
+      font: 600 18px/1.25 Consolas, "Cascadia Mono", monospace;
+    }
+    .sub { color: var(--muted); font: 12px/1.4 Consolas, monospace; }
+    .metrics {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3px 10px;
+      margin: 0;
+      font-variant-numeric: tabular-nums;
+    }
+    .metrics dt { color: var(--muted); }
+    .metrics dd { margin: 0; text-align: right; font-family: Consolas, "Cascadia Mono", monospace; }
+    .pair { margin-top: 12px; }
+    .pair h3 { margin: 0 0 6px; font-size: 13px; }
+    .point { background: #18202b; border-radius: 8px; padding: 8px 10px; }
+    .point header { color: var(--accent); font-size: 12px; margin-bottom: 6px; }
+    .eq { margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+    #formula { display: flex; flex-direction: column; gap: 8px; }
+    .derive {
+      margin-top: 4px;
+      background: #121820;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px 12px;
+    }
+    .derive h3 { margin: 0 0 8px; font-size: 13px; }
+    .sym {
+      margin: 8px 0 2px;
+      font: 600 14px/1.4 Consolas, "Cascadia Mono", monospace;
+      color: #f4f7fb;
+    }
+    .plug {
+      margin: 0 0 4px;
+      color: #c5d4e6;
+      font: 12.5px/1.45 Consolas, "Cascadia Mono", monospace;
+    }
+    .derive table { width: 100%; border-collapse: collapse; font: 12.5px/1.45 Consolas, "Cascadia Mono", monospace; }
+    .derive th, .derive td { text-align: left; padding: 4px 8px 4px 0; vertical-align: top; }
+    .derive th { color: var(--muted); font-weight: 500; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>接触求解单步</h1>
+    <button id="next" type="button">下一步</button>
+    <button id="substep" type="button">完成本子步</button>
+    <button id="big" type="button">下一大步</button>
+    <button id="reset" type="button">重置</button>
+    <span id="progress">正在加载 wasm…</span>
+  </header>
+  <main>
+    <canvas id="view" width="760" height="640"></canvas>
+    <div class="side">
+      <section id="status">
+        <h2>当前数值</h2>
+        <p class="note" id="order">先算 A–B，再算地面。每个接触两个点，合力是两点相加。</p>
+        <div id="state"></div>
+      </section>
+      <section id="formula-box">
+        <h2>这一帧的代入</h2>
+        <div id="formula"></div>
+      </section>
+    </div>
+  </main>
+  <script src="contact_trace.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

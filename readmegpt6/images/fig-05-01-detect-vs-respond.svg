@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 360" role="img" aria-labelledby="t d">
+  <title id="t">碰撞检测与碰撞响应分开</title>
+  <desc id="d">检测回答在哪里接触；响应回答用多大冲量改速度。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="360" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 5-1　先几何、后动力学：接触点不等于已经算完冲量</text>
+  <rect x="16" y="64" width="416" height="280" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="92" text-anchor="middle" class="lab">碰撞检测（本章）</text>
+  <text x="50" y="130" class="note">1. 两个形状够不够近？</text>
+  <text x="50" y="156" class="note">2. 沿哪个方向阻止继续靠近？</text>
+  <text x="50" y="182" class="note">3. 在哪个点施力，转动才合理？</text>
+  <text x="50" y="220" class="ok">输出：法线 n、分离量 s、接触点</text>
+  <text x="50" y="250" class="sub">AABB → 12 种形状对窄阶段</text>
+  <text x="50" y="274" class="sub">还没有改任何速度</text>
+
+  <rect x="448" y="64" width="416" height="280" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="92" text-anchor="middle" class="lab">碰撞响应（第 09 章起）</text>
+  <text x="470" y="130" class="note">1. 需要多大法向冲量？</text>
+  <text x="470" y="156" class="note">2. 摩擦能消掉多少切向速度？</text>
+  <text x="470" y="182" class="note">3. 恢复和穿透修正怎么处理？</text>
+  <text x="470" y="220" class="ok">输出：改线速度、角速度</text>
+  <text x="470" y="250" class="sub">有效质量、累计投影、热启动</text>
+
+</svg>

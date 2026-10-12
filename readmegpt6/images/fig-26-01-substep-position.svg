@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" role="img">
+  <title>位置积分位置</title>
+  <desc>位置积分是子步第四步。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker><marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker><marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker><marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker><marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker><marker id="ah-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#b91c1c"/></marker><marker id="ah-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#6b7280"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#1f2937; }
+      .eq { font: 12px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#1f2937; }
+      .eqb { font: 700 13px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#111827; }
+      .hot { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#c2410c; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#047857; }
+    </style>
+  </defs>
+
+  <rect width="960" height="330" fill="#ffffff"/>
+  <text x="480" y="28" class="title" text-anchor="middle">图 26-1　位置积分在一个子步里的位置</text>
+  <text x="480" y="50" class="sub" text-anchor="middle">子步里五件事按固定顺序各做一遍。橙色是本章。</text>
+  <rect x="12" y="100" width="86" height="112" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="55" y="140" class="lab" text-anchor="middle">准备</text>
+  <text x="55" y="162" class="small" text-anchor="middle">循环之前</text>
+  <text x="55" y="182" class="small" text-anchor="middle">只做 1 次</text>
+  <rect x="108" y="72" width="714" height="214" rx="10" fill="#ffffff" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="465" y="94" class="lab" text-anchor="middle">子步循环内。N = 4 时，这五件事整体重复 4 轮</text>
+  <rect x="120" y="112" width="130" height="100" rx="8" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="185" y="150" class="lab" text-anchor="middle">① 速度积分</text>
+  <text x="185" y="178" class="small" text-anchor="middle">外力 重力 阻尼</text>
+  <rect x="260" y="112" width="130" height="100" rx="8" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="325" y="150" class="lab" text-anchor="middle">② 热启动</text>
+  <text x="325" y="178" class="small" text-anchor="middle">重放旧冲量</text>
+  <rect x="400" y="112" width="130" height="100" rx="8" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="465" y="150" class="lab" text-anchor="middle">③ 求解</text>
+  <text x="465" y="178" class="small" text-anchor="middle">软约束 法向</text>
+  <rect x="540" y="112" width="130" height="100" rx="8" fill="#fed7aa" stroke="#c2410c" stroke-width="3"/>
+  <text x="605" y="150" class="lab" text-anchor="middle">④ 位置积分</text>
+  <text x="605" y="178" class="small" text-anchor="middle">累加位移转角</text>
+  <rect x="680" y="112" width="130" height="100" rx="8" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="745" y="150" class="lab" text-anchor="middle">⑤ Relax</text>
+  <text x="745" y="178" class="small" text-anchor="middle">摩擦 反弹</text>
+  <line x1="250" y1="162" x2="260" y2="162" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <line x1="390" y1="162" x2="400" y2="162" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <line x1="530" y1="162" x2="540" y2="162" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <line x1="670" y1="162" x2="680" y2="162" stroke="#1f2937" stroke-width="2" marker-end="url(#ah-ink)"/>
+  <rect x="834" y="100" width="114" height="112" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="891" y="136" class="lab" text-anchor="middle">收尾</text>
+  <text x="891" y="160" class="small" text-anchor="middle">存冲量</text>
+  <text x="891" y="180" class="small" text-anchor="middle">写回位置</text>
+  <text x="891" y="200" class="small" text-anchor="middle">清空力</text>
+  <text x="480" y="312" class="note" text-anchor="middle">用的是求解之后的速度。写的是本大步累计位移，不是世界坐标本身。</text>
+</svg>

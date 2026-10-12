@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 566" role="img">
+  <title>速度积分循环体的七步顺序</title>
+  <desc>读速度、算阻尼、定重力缩放、算两个增量、合成、写回。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker><marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker><marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker><marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker><marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker><marker id="ah-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#b91c1c"/></marker><marker id="ah-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#6b7280"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#1f2937; }
+      .eq { font: 12px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#1f2937; }
+      .eqb { font: 700 13px "Consolas","Cascadia Mono","Microsoft YaHei",monospace; fill:#111827; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#b91c1c; }
+      .hot { font: 700 12px "Segoe UI","Microsoft YaHei","Noto Sans SC",sans-serif; fill:#c2410c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="566" fill="#ffffff"/>
+  <text x="440" y="28" class="title" text-anchor="middle">图 23-3　对一个刚体的处理顺序（共 7 步，循环体对每个醒着的刚体各执行一次）</text>
+  <text x="440" y="50" class="sub" text-anchor="middle">橙色那一步是全部计算的汇合点：旧速度先缩，再加增量。</text>
+  <rect x="64" y="70" width="300" height="54" rx="8" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+  <rect x="380" y="70" width="484" height="54" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+  <circle cx="36" cy="97" r="14" fill="#1d4ed8"/>
+  <text x="36" y="102" text-anchor="middle" class="lab" style="fill:#ffffff">1</text>
+  <line x1="36" y1="111" x2="36" y2="151" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ah-n)"/>
+  <text x="78" y="92" class="lab" text-anchor="start">读出旧速度</text>
+  <text x="78" y="113" class="small" text-anchor="start">把 v 和 ω 取到局部变量</text>
+  <text x="392" y="92" class="eq" text-anchor="start">v, w ← linearVelocity, angularVelocity</text>
+  <text x="392" y="113" class="small" text-anchor="start">src/solver.c  第 83–84 行</text>
+  <rect x="64" y="138" width="300" height="54" rx="8" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+  <rect x="380" y="138" width="484" height="54" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+  <circle cx="36" cy="165" r="14" fill="#1d4ed8"/>
+  <text x="36" y="170" text-anchor="middle" class="lab" style="fill:#ffffff">2</text>
+  <line x1="36" y1="179" x2="36" y2="219" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ah-n)"/>
+  <text x="78" y="160" class="lab" text-anchor="start">算阻尼缩放比</text>
+  <text x="78" y="181" class="small" text-anchor="start">两次除法，结果在 0 到 1 之间</text>
+  <text x="392" y="160" class="eq" text-anchor="start">kv = 1/(1+h·c_v)；  kw = 1/(1+h·c_ω)</text>
+  <text x="392" y="181" class="small" text-anchor="start">src/solver.c  第 94–95 行</text>
+  <rect x="64" y="206" width="300" height="54" rx="8" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+  <rect x="380" y="206" width="484" height="54" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+  <circle cx="36" cy="233" r="14" fill="#1d4ed8"/>
+  <text x="36" y="238" text-anchor="middle" class="lab" style="fill:#ffffff">3</text>
+  <line x1="36" y1="247" x2="36" y2="287" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ah-n)"/>
+  <text x="78" y="228" class="lab" text-anchor="start">决定吃不吃重力</text>
+  <text x="78" y="249" class="small" text-anchor="start">invMass 为 0 的刚体不受重力</text>
+  <text x="392" y="228" class="eq" text-anchor="start">gs = (invMass&gt;0) ? gravityScale : 0</text>
+  <text x="392" y="249" class="small" text-anchor="start">src/solver.c  第 98 行</text>
+  <rect x="64" y="274" width="300" height="54" rx="8" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+  <rect x="380" y="274" width="484" height="54" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+  <circle cx="36" cy="301" r="14" fill="#1d4ed8"/>
+  <text x="36" y="306" text-anchor="middle" class="lab" style="fill:#ffffff">4</text>
+  <line x1="36" y1="315" x2="36" y2="355" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ah-n)"/>
+  <text x="78" y="296" class="lab" text-anchor="start">线速度增量</text>
+  <text x="78" y="317" class="small" text-anchor="start">外力项加重力项，不含阻尼</text>
+  <text x="392" y="296" class="eq" text-anchor="start">Δv = h·invMass·F + h·gs·g</text>
+  <text x="392" y="317" class="small" text-anchor="start">src/solver.c  第 101 行</text>
+  <rect x="64" y="342" width="300" height="54" rx="8" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+  <rect x="380" y="342" width="484" height="54" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+  <circle cx="36" cy="369" r="14" fill="#1d4ed8"/>
+  <text x="36" y="374" text-anchor="middle" class="lab" style="fill:#ffffff">5</text>
+  <line x1="36" y1="383" x2="36" y2="423" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ah-n)"/>
+  <text x="78" y="364" class="lab" text-anchor="start">角速度增量</text>
+  <text x="78" y="385" class="small" text-anchor="start">只有力矩项，没有重力项</text>
+  <text x="392" y="364" class="eq" text-anchor="start">Δω = h·invInertia·τ</text>
+  <text x="392" y="385" class="small" text-anchor="start">src/solver.c  第 102 行</text>
+  <rect x="64" y="410" width="300" height="54" rx="8" fill="#fed7aa" stroke="#c2410c" stroke-width="2.5"/>
+  <rect x="380" y="410" width="484" height="54" rx="8" fill="#ffffff" stroke="#c2410c" stroke-width="2.5"/>
+  <circle cx="36" cy="437" r="14" fill="#c2410c"/>
+  <text x="36" y="442" text-anchor="middle" class="lab" style="fill:#ffffff">6</text>
+  <line x1="36" y1="451" x2="36" y2="491" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ah-n)"/>
+  <text x="78" y="432" class="lab" text-anchor="start">合成新速度</text>
+  <text x="78" y="453" class="small" text-anchor="start">旧速度先缩小，再加增量</text>
+  <text x="392" y="432" class="eq" text-anchor="start">v = kv·v + Δv；  w = kw·w + Δω</text>
+  <text x="392" y="453" class="small" text-anchor="start">src/solver.c  第 104–105 行</text>
+  <rect x="64" y="478" width="300" height="54" rx="8" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5"/>
+  <rect x="380" y="478" width="484" height="54" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+  <circle cx="36" cy="505" r="14" fill="#1d4ed8"/>
+  <text x="36" y="510" text-anchor="middle" class="lab" style="fill:#ffffff">7</text>
+  <text x="78" y="500" class="lab" text-anchor="start">写回状态</text>
+  <text x="78" y="521" class="small" text-anchor="start">只写速度，不写位置</text>
+  <text x="392" y="500" class="eq" text-anchor="start">linearVelocity = v；  angularVelocity = w</text>
+  <text x="392" y="521" class="small" text-anchor="start">src/solver.c  第 107–108 行</text>
+</svg>

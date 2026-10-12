@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">Jacobian 把接触速度写成一行系数</title>
+  <desc id="d">u = J V。J 读出约束速度，J 转置把标量冲量播回两个刚体。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+  <text x="440" y="28" text-anchor="middle" class="title">图 9-5　Jacobian：一行系数读速度，转置后把冲量播回去</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">u = J V，ΔV = M⁻¹ Jᵀ λ。不要要求 J 的每一列单位相同：它们配对的是不同广义速度。</text>
+  <rect x="16" y="64" width="848" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <rect x="50" y="100" width="780" height="56" rx="8" fill="#dbeafe" stroke="#1d4ed8"/>
+  <text x="440" y="124" text-anchor="middle" class="lab" fill="#1d4ed8">J = (−nx, −ny, −rA×n,  nx, ny,  rB×n)</text>
+  <text x="440" y="146" text-anchor="middle" class="small">一行：读出 u = J V</text>
+  <rect x="50" y="180" width="120" height="160" rx="8" fill="#ffedd5" stroke="#c2410c"/>
+  <text x="110" y="210" text-anchor="middle" class="lab" fill="#c2410c">V</text>
+  <text x="110" y="234" text-anchor="middle" class="small">vAx</text>
+  <text x="110" y="254" text-anchor="middle" class="small">vAy</text>
+  <text x="110" y="274" text-anchor="middle" class="small">ωA</text>
+  <text x="110" y="294" text-anchor="middle" class="small">vBx …</text>
+  <text x="110" y="318" text-anchor="middle" class="small">六维速度</text>
+  <rect x="220" y="210" width="200" height="80" rx="8" fill="#dcfce7" stroke="#047857"/>
+  <text x="320" y="244" text-anchor="middle" class="ok">u = J V</text>
+  <text x="320" y="268" text-anchor="middle" class="small">法向相对速度</text>
+  <rect x="480" y="180" width="160" height="160" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="560" y="230" text-anchor="middle" class="lab" fill="#7c3aed">Jᵀ λ</text>
+  <text x="560" y="258" text-anchor="middle" class="small">广义冲量方向</text>
+  <text x="560" y="286" text-anchor="middle" class="small">A 受 −λ n</text>
+  <text x="560" y="310" text-anchor="middle" class="small">B 受 +λ n</text>
+  <rect x="680" y="210" width="150" height="80" rx="8" fill="#dcfce7" stroke="#047857"/>
+  <text x="755" y="244" text-anchor="middle" class="ok">K = J M⁻¹ Jᵀ</text>
+  <text x="755" y="268" text-anchor="middle" class="small">再取倒数得有效质量</text>
+</svg>

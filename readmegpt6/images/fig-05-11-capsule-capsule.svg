@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">胶囊与胶囊：面接触两点或端点一点</title>
+  <desc id="d">左：两轴平行重叠，裁出两点。右：B 完全在 A 轴段外，退回单点。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+      .tiny { font: 11px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 5-11　胶囊-胶囊：先看两轴是否互相投影在内部</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">都在内部就尝试裁两点；任一端完全在外就只保留最近点。</text>
+
+  <rect x="16" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="90" text-anchor="middle" class="lab">情况 1：面接触，两点</text>
+  <line x1="60" y1="250" x2="380" y2="250" stroke="#1d4ed8" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="60" cy="250" r="22" fill="#bfdbfe" fill-opacity="0.4" stroke="#1d4ed8"/>
+  <circle cx="380" cy="250" r="22" fill="#bfdbfe" fill-opacity="0.4" stroke="#1d4ed8"/>
+  <line x1="140" y1="170" x2="300" y2="170" stroke="#c2410c" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="140" cy="170" r="36" fill="#fed7aa" fill-opacity="0.45" stroke="#c2410c"/>
+  <circle cx="300" cy="170" r="36" fill="#fed7aa" fill-opacity="0.45" stroke="#c2410c"/>
+  <circle cx="140" cy="228" r="6" fill="#047857"/>
+  <circle cx="300" cy="228" r="6" fill="#047857"/>
+  <text x="224" y="320" text-anchor="middle" class="ok">s=−0.05，p1=(1,0.275)，p2=(3,0.275)</text>
+  <text x="224" y="344" text-anchor="middle" class="small">两点力矩臂不同，才能撑住转动</text>
+  <text x="224" y="368" text-anchor="middle" class="tiny">重叠区间 [1,3]</text>
+
+  <rect x="448" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="90" text-anchor="middle" class="lab">情况 2：端点，单点</text>
+  <line x1="480" y1="250" x2="680" y2="250" stroke="#1d4ed8" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="480" cy="250" r="22" fill="#bfdbfe" fill-opacity="0.4" stroke="#1d4ed8"/>
+  <circle cx="680" cy="250" r="22" fill="#bfdbfe" fill-opacity="0.4" stroke="#1d4ed8"/>
+  <line x1="720" y1="214" x2="820" y2="214" stroke="#c2410c" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="720" cy="214" r="22" fill="#fed7aa" fill-opacity="0.5" stroke="#c2410c"/>
+  <circle cx="820" cy="214" r="22" fill="#fed7aa" fill-opacity="0.5" stroke="#c2410c"/>
+  <line x1="680" y1="250" x2="718" y2="216" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ah-n)"/>
+  <circle cx="700" cy="232" r="6" fill="#047857"/>
+  <text x="656" y="320" text-anchor="middle" class="ok">n=(0.8,0.6)，s=−0.1</text>
+  <text x="656" y="344" text-anchor="middle" class="small">B 整段投影在 A 右侧之外</text>
+  <text x="656" y="368" text-anchor="middle" class="tiny">p=(4.2,0.15)</text>
+
+</svg>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" role="img" aria-labelledby="t d">
+  <title id="t">两个接触点互相耦合</title>
+  <desc id="d">地面上盒子两点支撑。K 非对角为 0.5。顺序扫描残差缩小，联立解是 (2,2)。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="420" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 9-8　两个接触点为什么不能各算各的</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">m=1，I=0.5，左右底角杆臂 (±0.5, −0.5)。推左边也会改右边的法向速度。</text>
+  <rect x="16" y="64" width="848" height="340" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <line x1="80" y1="300" x2="800" y2="300" stroke="#6b7280" stroke-width="8"/>
+  <rect x="340" y="140" width="200" height="140" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <circle cx="440" cy="210" r="5" fill="#111827"/>
+  <circle cx="340" cy="280" r="7" fill="#1d4ed8"/>
+  <circle cx="540" cy="280" r="7" fill="#047857"/>
+  <text x="340" y="330" text-anchor="middle" class="lab" fill="#1d4ed8">点 1</text>
+  <text x="540" y="330" text-anchor="middle" class="lab" fill="#047857">点 2</text>
+  <text x="80" y="120" class="note">K = [[1.5, 0.5], [0.5, 1.5]]</text>
+  <text x="80" y="144" class="note">非对角 0.5 = 耦合</text>
+  <text x="80" y="176" class="ok">联立活动解：λ1=λ2=2</text>
+  <text x="80" y="200" class="ok">vy 与 ω 都回到 0</text>
+  <text x="600" y="120" class="note">顺序扫描第 1 点先得 8/3</text>
+  <text x="600" y="144" class="note">立刻把第 2 点速度改坏</text>
+  <text x="600" y="168" class="note">第 2 点再补 16/9</text>
+  <text x="600" y="200" class="sub">下一轮用负增量撤回多推的部分</text>
+  <text x="600" y="224" class="bad">禁止负增量就会越弹越厉害</text>
+
+</svg>

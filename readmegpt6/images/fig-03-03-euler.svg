@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-labelledby="t d">
+  <title id="t">显式欧拉与半隐式欧拉</title>
+  <desc id="d">显式用旧速度更新位置；半隐式先更新速度再用新速度走位置。</desc>
+
+  <defs>
+    <marker id="ah-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1f2937"/></marker>
+    <marker id="ah-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#1d4ed8"/></marker>
+    <marker id="ah-v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#047857"/></marker>
+    <marker id="ah-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#c2410c"/></marker>
+    <marker id="ah-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#7c3aed"/></marker>
+    <style>
+      .title { font: 700 16px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .sub { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#4b5563; }
+      .lab { font: 700 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:#111827; }
+      .small { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#374151; }
+      .note { font: 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .ok { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#047857; }
+      .bad { font: 700 12px "Segoe UI","Microsoft YaHei",sans-serif; fill:#b91c1c; }
+    </style>
+  </defs>
+
+  <rect width="880" height="400" fill="#ffffff"/>
+
+  <text x="440" y="28" text-anchor="middle" class="title">图 3-3　两种欧拉：用哪一份速度去走位置</text>
+  <text x="440" y="50" text-anchor="middle" class="sub">自由落体里两者速度相同，位置分别偏高和偏低。弹簧问题才能看出稳定性差异。</text>
+  <rect x="16" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="224" y="88" text-anchor="middle" class="lab">显式欧拉：用旧速度</text>
+  <circle cx="120" cy="260" r="16" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="260" cy="260" r="16" fill="#e5e7eb" stroke="#9ca3af" stroke-width="2"/>
+  <line x1="140" y1="260" x2="240" y2="260" stroke="#047857" stroke-width="2.2" marker-end="url(#ah-v)"/>
+  <text x="224" y="200" text-anchor="middle" class="note">x ← x + h · v旧</text>
+  <text x="224" y="224" text-anchor="middle" class="note">v ← v + h · a旧</text>
+  <text x="224" y="310" text-anchor="middle" class="sub">第一步 v=0 时位置不动</text>
+  <text x="224" y="334" text-anchor="middle" class="sub">但后面仍会下落，不是停在 10 m</text>
+
+  <rect x="448" y="64" width="416" height="320" rx="10" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="656" y="88" text-anchor="middle" class="lab">半隐式：先更新速度</text>
+  <circle cx="552" cy="260" r="16" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="720" cy="200" r="16" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+  <line x1="572" y1="252" x2="700" y2="210" stroke="#047857" stroke-width="2.2" marker-end="url(#ah-v)"/>
+  <text x="656" y="140" text-anchor="middle" class="note">v ← v + h · a</text>
+  <text x="656" y="164" text-anchor="middle" class="ok">x ← x + h · v新</text>
+  <text x="656" y="310" text-anchor="middle" class="sub">Box2D 积分位置用的是约束后的新速度</text>
+  <text x="656" y="334" text-anchor="middle" class="sub">不是无条件稳定，步长过大仍会炸</text>
+
+</svg>
